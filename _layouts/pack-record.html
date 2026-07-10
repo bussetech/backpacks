@@ -72,24 +72,20 @@ layout: default
     {%- endfor %}
   </ul>
 
-  {%- assign conflict_count = 0 -%}
-  {%- for sig_id in rec.signals -%}
-    {%- assign sig = site.data.signals[sig_id] -%}
-    {%- if sig.conflicts_with -%}{%- assign conflict_count = conflict_count | plus: 1 -%}{%- endif -%}
-  {%- endfor -%}
-  {%- if conflict_count > 0 -%}
+  {%- assign row = site.data.packs_index | where: "id", page.pack_id | first -%}
+  {%- if row.conflicts and row.conflicts.size > 0 -%}
   <h2>Sources that disagree</h2>
-  <p>These claims contradict each other and are recorded unresolved. We do not
+  <p>These claims contradict each other, and are recorded unresolved. We do not
   average them, pick between them, or quietly prefer the newer one.</p>
+  {%- for conflict in row.conflicts %}
+  <p><code>{{ conflict.attribute }}</code>:</p>
   <ul>
-    {%- for sig_id in rec.signals -%}
-      {%- assign sig = site.data.signals[sig_id] -%}
-      {%- if sig.conflicts_with %}
-    <li><code>{{ sig.field }}</code> = <strong>{{ sig.value }}</strong> —
-      <a href="{{ sig.url }}" rel="nofollow noopener">source</a>. {{ sig.notes }}</li>
-      {%- endif -%}
+    {%- for claim in conflict.claims %}
+    <li><strong>{{ claim.value }}</strong> —
+      <a href="{{ claim.url }}" rel="nofollow noopener">source</a>{% if claim.notes %}. {{ claim.notes }}{% endif %}</li>
     {%- endfor %}
   </ul>
+  {%- endfor -%}
   {%- endif -%}
 
   <h2>Provenance</h2>

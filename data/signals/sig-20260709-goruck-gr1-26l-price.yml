@@ -1,10 +1,10 @@
 id: sig-20260709-goruck-gr1-26l-price
-source: goruck-com
-url: https://www.goruck.com/products/gr1
-subject_type: pack
-subject_id: goruck-gr1-26l
-field: price
+site_id: goruck-gr1-26l
+attribute: price
 value: 395.0 USD
+source_url: https://www.goruck.com/products/gr1
+source_title: GR1
+publisher: GORUCK
 observed_date: '2026-07-09'
 collected_by: console:EPIC4-05
 confidence: high

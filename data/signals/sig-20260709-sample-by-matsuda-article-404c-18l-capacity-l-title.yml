@@ -1,14 +1,12 @@
 id: sig-20260709-sample-by-matsuda-article-404c-18l-capacity-l-title
-source: samplebymatsuda-com
-url: https://samplebymatsuda.com/products/article-404-18l-vx21-black-1
-subject_type: pack
-subject_id: sample-by-matsuda-article-404c-18l
-field: capacity_l
+site_id: sample-by-matsuda-article-404c-18l
+attribute: capacity_l
 value: 20
+source_url: https://samplebymatsuda.com/products/article-404-18l-vx21-black-1
+source_title: Article 404C - 20L - VX21 Black
+publisher: Sample
 observed_date: '2026-07-09'
 collected_by: console:EPIC4-05
 confidence: high
-conflicts_with:
-- sig-20260709-sample-by-matsuda-article-404c-18l-capacity-l
 notes: Read from the product page TITLE ('Article 404C - 20L - VX21 Black'), which contradicts the spec
   block on the same page. Both are accurate reports of what the page says. Not resolved.

@@ -1,10 +1,10 @@
 id: sig-20260709-alpha-one-niner-evade-1-5-25l-materials
-source: alphaoneniner-com
-url: https://www.alphaoneniner.com/products/alpha-one-niner-evade-1-5-backpack-gen-3
-subject_type: pack
-subject_id: alpha-one-niner-evade-1-5-25l
-field: materials
+site_id: alpha-one-niner-evade-1-5-25l
+attribute: materials
 value: Challenge Ultra 400TX, Dimension-Polyant X42, or 500D nylon
+source_url: https://www.alphaoneniner.com/products/alpha-one-niner-evade-1-5-backpack-gen-3
+source_title: EVADE 1.5 Backpack Gen 3
+publisher: Alpha One Niner
 observed_date: '2026-07-09'
 collected_by: console:EPIC4-05
 confidence: high

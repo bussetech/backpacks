@@ -1,10 +1,10 @@
 id: sig-20260709-mystery-ranch-metcalf-50l-weight-g
-source: mysteryranch-com
-url: https://www.mysteryranch.com/metcalf-50-pack
-subject_type: pack
-subject_id: mystery-ranch-metcalf-50l
-field: weight_g
+site_id: mystery-ranch-metcalf-50l
+attribute: weight_g
 value: 2268
+source_url: https://www.mysteryranch.com/metcalf-50-pack
+source_title: Metcalf 50 Pack | MYSTERY RANCH Backpacks
+publisher: Mystery Ranch
 observed_date: '2026-07-09'
 collected_by: console:EPIC4-05
 confidence: high

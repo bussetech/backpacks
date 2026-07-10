@@ -41,11 +41,28 @@ for rid, rec in records.items():
         "---\n"
     )
 
+# A conflict is two signals sharing (site_id, attribute) and disagreeing on value.
+# Derived, never stored: the gnome does not emit a conflict field, and a hand-kept
+# one would rot.
+by_key: dict = {}
+for sig in signals.values():
+    if sig.get("site_id"):
+        by_key.setdefault((sig["site_id"], sig["attribute"]), []).append(sig)
+
+conflicts_by_pack: dict = {}
+for (site_id, attribute), sigs in sorted(by_key.items()):
+    if len({str(s["value"]) for s in sigs}) > 1:
+        conflicts_by_pack.setdefault(site_id, []).append({
+            "attribute": attribute,
+            "claims": [{"value": str(s["value"]), "url": s["source_url"],
+                        "notes": s.get("notes", "")} for s in sorted(sigs, key=lambda x: x["id"])],
+        })
+
 index = []
 for rid, rec in sorted(records.items()):
     specs = rec.get("specs", {})
     price = rec.get("price", {})
-    conflicts = sum(1 for s in rec.get("signals", []) if signals.get(s, {}).get("conflicts_with"))
+    conflicts = conflicts_by_pack.get(rid, [])
     index.append({
         "id": rid,
         "name": rec["name"],
@@ -60,7 +77,7 @@ for rid, rec in sorted(records.items()):
         "carry_style": rec.get("carry_style", []),
         "use_case": rec.get("use_case", []),
         "gap_count": len(rec.get("gaps", [])),
-        "conflict_count": conflicts,
+        "conflicts": conflicts,
     })
 
 # Records with no published capacity sort last, not first — an unknown is not a zero.
@@ -72,4 +89,6 @@ index.sort(key=lambda r: (r["capacity_l"] is None, r["capacity_l"] or 0, r["name
     + yaml.safe_dump(index, sort_keys=False, allow_unicode=True, width=100)
 )
 
-print(f"gen-pages: {len(records)} stub(s) in packs/, {len(index)} row(s) in data/packs_index.yml")
+n_conf = sum(len(v) for v in conflicts_by_pack.values())
+print(f"gen-pages: {len(records)} stub(s) in packs/, {len(index)} row(s) in data/packs_index.yml, "
+      f"{n_conf} derived conflict(s)")

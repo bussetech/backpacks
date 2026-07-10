@@ -1,10 +1,10 @@
 id: sig-20260709-evergoods-civic-panel-loader-16l-weight-g
-source: evergoods-us
-url: https://evergoods.us/products/civic-panel-loader
-subject_type: pack
-subject_id: evergoods-civic-panel-loader-16l
-field: weight_g
+site_id: evergoods-civic-panel-loader-16l
+attribute: weight_g
 value: 1332
+source_url: https://evergoods.us/products/civic-panel-loader
+source_title: CIVIC Panel Loader
+publisher: EVERGOODS
 observed_date: '2026-07-09'
 collected_by: console:EPIC4-05
 confidence: high

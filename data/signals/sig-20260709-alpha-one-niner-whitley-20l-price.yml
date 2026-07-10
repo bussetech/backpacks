@@ -1,10 +1,10 @@
 id: sig-20260709-alpha-one-niner-whitley-20l-price
-source: alphaoneniner-com
-url: https://www.alphaoneniner.com/products/whitley
-subject_type: pack
-subject_id: alpha-one-niner-whitley-20l
-field: price
+site_id: alpha-one-niner-whitley-20l
+attribute: price
 value: 199.0 USD
+source_url: https://www.alphaoneniner.com/products/whitley
+source_title: WHITLEY
+publisher: Alpha One Niner
 observed_date: '2026-07-09'
 collected_by: console:EPIC4-05
 confidence: high

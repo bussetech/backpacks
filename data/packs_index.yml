@@ -15,7 +15,7 @@
   use_case:
   - edc
   gap_count: 0
-  conflict_count: 0
+  conflicts: []
 - id: sample-by-matsuda-article-404c-18l
   name: Article 404C
   maker: sample-by-matsuda
@@ -31,7 +31,16 @@
   use_case:
   - edc
   gap_count: 1
-  conflict_count: 2
+  conflicts:
+  - attribute: capacity_l
+    claims:
+    - value: '18'
+      url: https://samplebymatsuda.com/products/article-404-18l-vx21-black-1
+      notes: Read from the spec block. The same page's title says 20L.
+    - value: '20'
+      url: https://samplebymatsuda.com/products/article-404-18l-vx21-black-1
+      notes: Read from the product page TITLE ('Article 404C - 20L - VX21 Black'), which contradicts the
+        spec block on the same page. Both are accurate reports of what the page says. Not resolved.
 - id: evergoods-civic-travel-bag-20l
   name: CIVIC Travel Bag 20L
   maker: evergoods
@@ -48,7 +57,7 @@
   - travel
   - edc
   gap_count: 0
-  conflict_count: 0
+  conflicts: []
 - id: goruck-rucker-20l
   name: Rucker (5.0) 20L
   maker: goruck
@@ -64,7 +73,7 @@
   use_case:
   - training
   gap_count: 2
-  conflict_count: 0
+  conflicts: []
 - id: alpha-one-niner-whitley-20l
   name: WHITLEY Backpack
   maker: alpha-one-niner
@@ -80,7 +89,7 @@
   use_case:
   - edc
   gap_count: 1
-  conflict_count: 0
+  conflicts: []
 - id: goruck-gr1-21l
   name: GR1 21L
   maker: goruck
@@ -98,7 +107,7 @@
   - training
   - travel
   gap_count: 0
-  conflict_count: 0
+  conflicts: []
 - id: evergoods-civic-half-zip-22l
   name: CIVIC Half Zip 22L
   maker: evergoods
@@ -114,7 +123,7 @@
   use_case:
   - edc
   gap_count: 0
-  conflict_count: 0
+  conflicts: []
 - id: evergoods-mountain-panel-loader-22l
   name: MOUNTAIN Panel Loader 22L
   maker: evergoods
@@ -131,7 +140,7 @@
   - hiking
   - edc
   gap_count: 0
-  conflict_count: 0
+  conflicts: []
 - id: filip-raboch-wanderer-23l
   name: Wanderer
   maker: filip-raboch
@@ -148,7 +157,7 @@
   - travel
   - edc
   gap_count: 1
-  conflict_count: 0
+  conflicts: []
 - id: evergoods-civic-panel-loader-24l
   name: CIVIC Panel Loader 24L
   maker: evergoods
@@ -165,7 +174,7 @@
   - edc
   - travel
   gap_count: 0
-  conflict_count: 0
+  conflicts: []
 - id: alpha-one-niner-evade-1-5-25l
   name: EVADE 1.5 Backpack Gen 3
   maker: alpha-one-niner
@@ -182,7 +191,7 @@
   - edc
   - travel
   gap_count: 1
-  conflict_count: 0
+  conflicts: []
 - id: goruck-rucker-25l
   name: Rucker (5.0) 25L
   maker: goruck
@@ -198,7 +207,7 @@
   use_case:
   - training
   gap_count: 2
-  conflict_count: 0
+  conflicts: []
 - id: evergoods-civic-half-zip-26l
   name: CIVIC Half Zip 26L
   maker: evergoods
@@ -214,7 +223,7 @@
   use_case:
   - edc
   gap_count: 0
-  conflict_count: 0
+  conflicts: []
 - id: evergoods-civic-travel-bag-26l
   name: CIVIC Travel Bag 26L
   maker: evergoods
@@ -230,7 +239,7 @@
   use_case:
   - travel
   gap_count: 0
-  conflict_count: 0
+  conflicts: []
 - id: goruck-gr1-26l
   name: GR1 26L
   maker: goruck
@@ -248,7 +257,7 @@
   - training
   - travel
   gap_count: 0
-  conflict_count: 0
+  conflicts: []
 - id: mystery-ranch-2-day-assault-27l
   name: 2 Day Assault Pack
   maker: mystery-ranch
@@ -265,7 +274,7 @@
   - edc
   - military
   gap_count: 2
-  conflict_count: 0
+  conflicts: []
 - id: filip-raboch-hiker-30l
   name: Hiker 30L
   maker: filip-raboch
@@ -280,7 +289,7 @@
   use_case:
   - hiking
   gap_count: 2
-  conflict_count: 0
+  conflicts: []
 - id: evergoods-civic-travel-bag-35l
   name: CIVIC Travel Bag 35L
   maker: evergoods
@@ -296,7 +305,7 @@
   use_case:
   - travel
   gap_count: 0
-  conflict_count: 0
+  conflicts: []
 - id: mystery-ranch-metcalf-50l
   name: Metcalf 50 Pack
   maker: mystery-ranch
@@ -313,7 +322,7 @@
   - hunting
   - hiking
   gap_count: 1
-  conflict_count: 0
+  conflicts: []
 - id: filip-raboch-summit-seeker
   name: Summit Seeker
   maker: filip-raboch
@@ -328,7 +337,7 @@
   use_case:
   - hiking
   gap_count: 2
-  conflict_count: 0
+  conflicts: []
 - id: filip-raboch-summit-seeker-plus
   name: Summit Seeker Plus
   maker: filip-raboch
@@ -343,4 +352,4 @@
   use_case:
   - hiking
   gap_count: 1
-  conflict_count: 0
+  conflicts: []

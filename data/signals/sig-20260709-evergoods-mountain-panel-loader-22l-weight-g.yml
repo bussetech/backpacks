@@ -1,10 +1,10 @@
 id: sig-20260709-evergoods-mountain-panel-loader-22l-weight-g
-source: evergoods-us
-url: https://evergoods.us/products/mountain-panel-loader-22l
-subject_type: pack
-subject_id: evergoods-mountain-panel-loader-22l
-field: weight_g
+site_id: evergoods-mountain-panel-loader-22l
+attribute: weight_g
 value: 809
+source_url: https://evergoods.us/products/mountain-panel-loader-22l
+source_title: MOUNTAIN Panel Loader 22L
+publisher: EVERGOODS
 observed_date: '2026-07-09'
 collected_by: console:EPIC4-05
 confidence: high

@@ -1,10 +1,10 @@
 id: sig-20260709-mystery-ranch-metcalf-50l-capacity-l
-source: mysteryranch-com
-url: https://www.mysteryranch.com/metcalf-50-pack
-subject_type: pack
-subject_id: mystery-ranch-metcalf-50l
-field: capacity_l
+site_id: mystery-ranch-metcalf-50l
+attribute: capacity_l
 value: 50
+source_url: https://www.mysteryranch.com/metcalf-50-pack
+source_title: Metcalf 50 Pack | MYSTERY RANCH Backpacks
+publisher: Mystery Ranch
 observed_date: '2026-07-09'
 collected_by: console:EPIC4-05
 confidence: high
