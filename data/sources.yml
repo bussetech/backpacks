@@ -8,8 +8,11 @@
 #   - This registry IS the allowlist. The deterministic fetch layer
 #     (platform scripts/source_fetch.py) requests exactly the URLs of
 #     status:active sources and nothing else. The gnome never fetches.
-#   - status:manual sources are NEVER fetched. They exist to document why.
-#     Their material reaches the scout as hand-assembled research issues.
+#   - status:manual sources are NEVER fetched BY THE SCHEDULED FETCH LAYER.
+#     They exist to document why. Their material reaches the scout as
+#     hand-assembled research issues. This says nothing about how the founding
+#     corpus was collected — see HOW THE FOUNDING CORPUS WAS ACTUALLY
+#     COLLECTED, below, which says it plainly.
 #   - Adding a source is a one-file PR here: read robots.txt yourself, read
 #     the ToS yourself, record what they say under robots:, and set status.
 #     Sysop- or gnome-proposed; humans merge.
@@ -22,7 +25,9 @@
 #   - Two makers (Evergoods, GoRuck) publish Terms of Service that
 #     explicitly prohibit "spider, crawl, or scrape". A permissive
 #     robots.txt does not override a prohibition the operator wrote in
-#     prose. We do not fetch them.
+#     prose. The fetch layer does not touch them. Whether the founding
+#     research agent's one-time fetch of their product pages sits inside
+#     that same prohibition is an open question, filed, not assumed.
 #   - One maker (Alpha One Niner) forbids copying or transmitting its
 #     materials without prior written consent, and its only feed is empty.
 #   - One maker (Mystery Ranch) publishes no feed at all. There is no
@@ -38,10 +43,25 @@
 #     do; we read them, credit them by name, and link to them. We do not
 #     aggregate them on a cron.
 #
-# The consequence is deliberate and load-bearing: this dataset is
-# hand-carried. It grows when a human reads something and files a research
-# issue. It will grow slowly. That is the correct speed for a dataset whose
-# only asset is being right.
+# The consequence is deliberate and load-bearing: nothing here is on a cron.
+# The dataset grows when someone reads a source and files a research issue, and
+# the scout is fed from that issue. It will grow slowly. That is the correct
+# speed for a dataset whose only asset is being right.
+#
+# HOW THE FOUNDING CORPUS WAS ACTUALLY COLLECTED (2026-07-09)
+#   Not by a human. By an AI agent session, which searched, fetched each cited
+#   page ONCE, read what came back, and recorded the facts with the URL. No
+#   crawling, no recursion, no schedule, no page fetched twice. Earlier
+#   revisions of this file said "read once by a human"; that was false and is
+#   corrected below. The signals carry `collected_by: console:EPIC4-05`, which
+#   was always the honest field — it was the prose around it that was not.
+#
+#   This leaves a question we have NOT settled: evergoods-us and goruck-com
+#   forbid "spider, crawl, or scrape" in their terms, and the rule written into
+#   this very file is that a permissive robots.txt does not license what an
+#   operator forbids in prose. A single agent-initiated fetch is not spidering.
+#   We are not going to decide in our own favour by assertion. Filed as an open
+#   studio decision; if either maker objects, their specs come out.
 #
 # A note on AI crawlers: not one of the seven robots.txt files probed on
 # 2026-07-09 named an AI or LLM crawler — no GPTBot, CCBot, ClaudeBot,
@@ -70,8 +90,8 @@ sources:
         clause restricting automated access. MANUAL because there is no
         machine-readable surface to poll politely: no RSS, no Atom, no JSON
         feed, and product pages are JS-rendered (several returned only
-        navigation when fetched). Specs are hand-carried from the maker's
-        pages, cited per claim.
+        navigation when fetched). Specs were taken from the maker's pages by a
+        one-time agent fetch, cited per claim, and are never polled.
       ai_crawler_directives: "none — no GPTBot, CCBot, ClaudeBot, anthropic-ai, or Google-Extended directives present."
     added: "2026-07-09"
     notes: "Acquired by YETI Holdings 2024-02-02; see the yeti-investors source for the primary corporate record."
@@ -153,7 +173,8 @@ sources:
         payment. Nothing here forbids reading. MANUAL anyway, by our own
         judgment: this is a one-person made-to-order shop selling by monthly
         raffle. Pointing a scheduled fetcher at it would be discourteous in
-        a way robots.txt has no syntax to express. We read it by hand.
+        a way robots.txt has no syntax to express. Its pages were fetched once
+        by the founding research agent and are never polled.
       ai_crawler_directives: "none named."
     added: "2026-07-09"
 
@@ -237,7 +258,7 @@ sources:
 
   # ---- press ---------------------------------------------------------------
   # Cited for corporate and historical facts the makers do not publish
-  # themselves. Read once, by hand, for the founding corpus. Their robots.txt
+  # themselves. Fetched once by the founding research agent. Their robots.txt
   # files were NOT probed — which is precisely why they are manual and why we
   # claim no fetch posture for them. An unprobed source is never active.
   - id: outdoorsportswire-com
@@ -249,9 +270,9 @@ sources:
     robots:
       checked: "2026-07-09"
       notes: >-
-        Not probed. The article was read once by a human for the founding
-        corpus. MANUAL, and no fetch posture is claimed: we do not assert
-        permission we did not check.
+        Not probed. The article was fetched once by the founding research
+        agent, not by a crawler. MANUAL, and no fetch posture is claimed: we do
+        not assert permission we did not check.
       ai_crawler_directives: "not probed — unknown."
     added: "2026-07-09"
 
@@ -263,7 +284,7 @@ sources:
     status: manual
     robots:
       checked: "2026-07-09"
-      notes: "Not probed; read once by hand. MANUAL, no fetch posture claimed."
+      notes: "Not probed; fetched once by the founding research agent. MANUAL, no fetch posture claimed."
       ai_crawler_directives: "not probed — unknown."
     added: "2026-07-09"
 
@@ -275,7 +296,7 @@ sources:
     status: manual
     robots:
       checked: "2026-07-09"
-      notes: "Not probed; read once by hand. MANUAL, no fetch posture claimed."
+      notes: "Not probed; fetched once by the founding research agent. MANUAL, no fetch posture claimed."
       ai_crawler_directives: "not probed — unknown."
     added: "2026-07-09"
 

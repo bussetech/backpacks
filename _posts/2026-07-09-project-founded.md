@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "backpacks founded, with 21 packs and a source registry that fetches nothing"
-description: "A source-transparent dataset of technical and boutique carry. Every spec cited, every gap named, every source read by hand."
+description: "A source-transparent dataset of technical and boutique carry. Every spec cited, every gap named, every page fetched once by an agent — never crawled, never on a schedule."
 ---
 
 **backpacks** is now part of [Bussetech Software Studio](https://bussetech.com):
@@ -22,9 +22,19 @@ GoRuck prohibit crawling in their terms. Alpha One Niner asks that its
 materials not be copied. Mystery Ranch publishes no feed at all. And
 Carryology, The Perfect Pack and Suburban — who publish perfectly permissive
 feeds — are the people who have documented this subject for years, so we read
-them and credit them and do not aggregate them on a cron. This dataset is
-hand-carried. It will grow slowly. That is the correct speed for a dataset
-whose only asset is being right.
+them and credit them and do not aggregate them on a cron. No scheduled fetcher
+will ever touch a source in this registry.
+
+**The corpus itself was gathered by an AI agent, not by a person.** It fetched
+each cited page once, on request; nothing was crawled and nothing was polled.
+The first version of this post said the dataset was "hand-carried", which
+sounded better and was not true. It also leaves a question we have not settled:
+Evergoods and GoRuck forbid "spider, crawl, or scrape", and a single agent
+fetch is not spidering — but we wrote the rule that a permissive `robots.txt`
+does not license what an operator forbids in prose, and we owe it to that rule
+not to grade our own homework. The question is recorded as an open studio
+decision. If either maker would rather we had not, their specifications come
+down.
 
 **The gaps are on the record.** A pack whose weight the maker never published
 says so, on its page, in a list titled *what we don't know*. An empty field

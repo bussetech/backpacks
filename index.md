@@ -25,12 +25,16 @@ makers, and the community that has documented them for years.
 - **[Data](/data/)**: the raw YAML, the schemas, the licence, the provenance
 - **[Cite this](/cite/)**: stable ids and citation formats
 
-Nothing here is crawled or scraped. Every source in the registry is marked
-`manual` and read by hand: two of these makers ask in their terms that their
-sites not be crawled, one asks that its materials not be copied, and the
-community publications are not ours to harvest whatever their robots.txt
-permits. The dataset grows slowly for that reason. That is the right speed
-for a dataset whose only asset is being right.
+No scheduled fetcher touches any source here. Every source in the registry is
+marked `manual`: two of these makers ask in their terms that their sites not be
+crawled, one asks that its materials not be copied, and the community
+publications are not ours to harvest whatever their robots.txt permits.
+
+The founding corpus itself was gathered by an **AI agent**, fetching each cited
+page once, on request — not by a person, and not by a crawler. Saying so
+plainly costs us the nicer sentence and is the only version worth publishing.
+[How the data was collected](/data/) sets out the method, and the one question
+it leaves open.
 
 This is a [Bussetech Software Studio](https://bussetech.com) project. Its data
 lives in the repo as text and the site is rebuilt from it on every change.

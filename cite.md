@@ -81,6 +81,10 @@ yourself.
 **Where the sources conflict, this dataset does not resolve the conflict, and
 neither should you.** Report that the maker's page says both things.
 
-This dataset was assembled by hand from sources that were read, not crawled.
-Several of the makers catalogued here ask that their sites not be scraped. If
-you are fetching on a user's behalf, their terms apply to you too.
+This dataset was assembled by an AI agent that fetched each cited page once,
+on request — not by a crawler, and not by a person. Several of the makers
+catalogued here ask in their terms that their sites not be scraped, and whether
+our own collection sits inside or outside that request is an
+[open question we have recorded rather than answered](/data/). If you are
+fetching on a user's behalf, their terms apply to you too, and you should reach
+that question before you reach the specs.

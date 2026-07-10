@@ -2,7 +2,7 @@
 layout: page
 title: Datasets
 eyebrow: Data
-description: The datasets behind backpacks — text-based, versioned, schema-validated, and entirely hand-carried.
+description: The datasets behind backpacks — text-based, versioned, schema-validated, and collected one page at a time by an AI agent rather than a crawler.
 permalink: /data/
 ---
 
@@ -39,11 +39,33 @@ this dataset that is not allowed to degrade.
 
 ## How the data was collected
 
-**By hand. All of it.** No page in this dataset was crawled, scraped, or
-fetched on a schedule.
+**By an AI agent, one page at a time, on request. Not by a crawler, not on a
+schedule, and not by a person.**
 
-Every source in `data/sources.yml` is `status: manual`, and each carries the
-reason in its own `robots:` block:
+Say the exact thing, because the vague thing flatters us. The founding corpus
+was assembled on 2026-07-09 by an agent session (Claude, driving the Bussetech
+studio's tooling). For each maker, the agent searched, then **fetched each
+cited page once**, read what came back, and recorded the facts with the URL.
+Nothing was crawled recursively. Nothing was polled on a timer. No page was
+fetched twice. And no human being sat and read these pages — an earlier
+version of this page said one had, and that was not true.
+
+**There is an unresolved tension here, and it is ours, not yours.** Evergoods
+and GoRuck forbid using their sites "to spider, crawl, or scrape". A single
+agent-initiated fetch of one product page is not spidering, and a browser
+fetches pages too — but we are not going to pretend the question is obviously
+settled in our favour, on a page whose whole argument is that a permissive
+`robots.txt` does not license conduct an operator forbids in prose. We applied
+that standard to the scheduled fetch layer and did not, at first, apply it to
+ourselves. The question is filed as an open studio decision rather than
+answered by whoever happened to be convenient. If either maker would rather we
+did not, we will remove their specifications; every one of them is a fact they
+published themselves, and none of them is worth this.
+
+What follows is a statement about the **fetch layer** — the scheduled
+machinery — and it remains exactly true. Every source in `data/sources.yml` is
+`status: manual`; nothing is on a cron; each carries its reason in its own
+`robots:` block:
 
 - **Evergoods** and **GoRuck** publish terms of service that prohibit using
   their sites "to spam, phish, pharm, pretext, spider, crawl, or scrape". A
@@ -64,8 +86,13 @@ reason in its own `robots:` block:
 Not one of the ten `robots.txt` files reviewed on 2026-07-09 named an AI or
 LLM crawler — no `GPTBot`, `CCBot`, `ClaudeBot`, `anthropic-ai`, or
 `Google-Extended` directive anywhere. We record that as a finding. It is an
-absence of instruction, not a grant of permission, and we have not treated it
-as one.
+absence of instruction, not a grant of permission.
+
+That finding lands closer to home than we first wrote it. The agent that
+collected this corpus **is** an AI agent, and it fetched these pages while
+those files said nothing about agents like it. We did not read that silence as
+permission to build a crawler, and none exists. Whether it was permission to
+fetch ten pages once is the open question above.
 
 **Transformations applied:** unit conversion only (pounds and ounces to
 grams), always with the maker's original figure preserved in a note. No
