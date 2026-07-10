@@ -104,6 +104,14 @@ if set(sites) - stubs:
 if stubs - set(sites):
     err(f"orphan page stubs: {', '.join(sorted(stubs - set(sites)))} — run scripts/gen-pages.sh")
 
+maker_stub_dir = ROOT / "makers"
+maker_stubs = {p.stem for p in maker_stub_dir.glob("*.md")} if maker_stub_dir.is_dir() else set()
+want_makers = {i for i, o in operators.items() if o["type"] == "maker"}
+if want_makers - maker_stubs:
+    err(f"maker pages missing for: {', '.join(sorted(want_makers - maker_stubs))} — run scripts/gen-pages.sh")
+if maker_stubs - want_makers:
+    err(f"orphan maker pages: {', '.join(sorted(maker_stubs - want_makers))} — run scripts/gen-pages.sh")
+
 # --- the derived index -------------------------------------------------------
 # data/packs_index.yml is generated. If it drifts from data/sites/, the site
 # renders numbers no record backs — the exact failure this dataset exists to

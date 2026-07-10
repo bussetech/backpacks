@@ -34,7 +34,7 @@ say — each record names the gap.
   {%- for rec in packs %}
     <tr>
       <td><a href="/packs/{{ rec.id }}/">{{ rec.name }}</a></td>
-      <td><a href="/makers/#{{ rec.maker }}">{{ rec.maker_name }}</a></td>
+      <td><a href="/makers/{{ rec.maker }}/">{{ rec.maker_name }}</a></td>
       <td>{% if rec.capacity_l %}{{ rec.capacity_l }} L{% else %}<em>not published</em>{% endif %}</td>
       <td>{% if rec.weight_g %}{{ rec.weight_g }} g{% else %}<em>not published</em>{% endif %}</td>
       <td>{% if rec.price_amount %}{{ rec.price_amount }} {{ rec.price_currency }}{% else %}<em>—</em>{% endif %}</td>

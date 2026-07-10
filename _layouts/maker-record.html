@@ -1,0 +1,80 @@
+---
+layout: default
+---
+{%- assign m = site.data.operators | where: "id", page.maker_id | first -%}
+{%- assign mine = site.data.packs_index | where: "maker", page.maker_id -%}
+<article class="prose">
+  <p class="eyebrow"><a href="/makers/">Makers</a></p>
+  <h1>{{ m.name }}</h1>
+
+  <p>
+    {%- if m.founded %}<strong>Founded:</strong> {{ m.founded }} · {% endif -%}
+    {%- if m.hq %}<strong>Based:</strong> {{ m.hq }} · {% endif -%}
+    <strong>Status:</strong> {{ m.status }}
+    {%- if m.founders and m.founders.size > 0 %} · <strong>Founded by:</strong> {{ m.founders | join: " and " }}{% endif -%}
+  </p>
+
+  {%- if m.status == "acquired" -%}
+  {%- assign parent = site.data.operators | where: "id", m.parent | first -%}
+  <h2>Acquisition</h2>
+  <p>Acquired by <strong>{{ parent.name }}</strong>, closed {{ m.acquired_date }}
+  {%- if m.acquisition_price %}, reported at {{ m.acquisition_price.amount }} {{ m.acquisition_price.currency }}
+  (confidence: {{ m.acquisition_price.confidence }}){% endif %}.</p>
+  <p><small>Ownership is a fact about a company, not a verdict on its
+  products. Where our sources say nothing about what an acquisition changed,
+  this page says nothing either.</small></p>
+  {%- endif -%}
+
+  <h2>About</h2>
+  <p>{{ m.notes | newline_to_br }}</p>
+
+  {%- if m.predecessors and m.predecessors.size > 0 %}
+  <h2>Lineage</h2>
+  <p>{{ m.predecessors | join: " → " }} → {{ m.name }}</p>
+  {%- endif -%}
+
+  <h2>Packs tracked ({{ mine.size }})</h2>
+  {%- if mine.size > 0 %}
+  <ul>
+    {%- for rec in mine %}
+    <li><a href="/packs/{{ rec.id }}/">{{ rec.name }}</a>
+      {%- if rec.line %} — {{ rec.line }} line{% endif -%}
+      {%- if rec.capacity_l %}, {{ rec.capacity_l }} L{% endif -%}
+      {%- if rec.gap_count > 0 %} <small>({{ rec.gap_count }} known gap{% if rec.gap_count > 1 %}s{% endif %})</small>{% endif -%}
+    </li>
+    {%- endfor %}
+  </ul>
+  {%- else %}
+  <p>None yet.</p>
+  {%- endif -%}
+
+  {%- if m.gaps and m.gaps.size > 0 %}
+  <h2>What we don't know</h2>
+  <p>Things we looked for and did not find. On the questions people most want
+  answered, the sources are often silent — and that silence is recorded rather
+  than filled with a plausible sentence.</p>
+  <ul>
+    {%- for gap in m.gaps %}
+    <li>{{ gap }}</li>
+    {%- endfor %}
+  </ul>
+  {%- endif -%}
+
+  {%- if m.sources and m.sources.size > 0 %}
+  <h2>Sources</h2>
+  <ul>
+    {%- for s in m.sources %}
+    <li><a href="{{ s.url }}" rel="nofollow noopener">{{ s.title | default: s.url }}</a>
+      {%- if s.publisher %} — {{ s.publisher }}{% endif -%}
+      {%- if s.kind %} ({{ s.kind }}){% endif -%}
+      {%- if s.note %}. {{ s.note }}{% endif -%}
+    </li>
+    {%- endfor %}
+  </ul>
+  {%- endif -%}
+
+  {%- if m.homepage %}
+  <p><a href="{{ m.homepage }}" rel="nofollow noopener">{{ m.name }}'s own site</a> —
+  read by hand, never crawled. See <a href="/data/">how the data was collected</a>.</p>
+  {%- endif -%}
+</article>

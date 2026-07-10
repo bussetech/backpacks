@@ -27,8 +27,11 @@ maker's own page disputes its capacity, the id takes the spec-block figure —
 **because an id must be stable, not because it is the truer number.** The
 record carries the conflict.
 
-Makers have stable ids too (`mystery-ranch`, `sample-by-matsuda`), used as
-anchors on the [makers](/makers/) page.
+Makers have stable ids too, and their own pages:
+
+    https://backpacks.bussetech.com/makers/<id>/
+
+for example `mystery-ranch` or `sample-by-matsuda`.
 
 ## Cite the record, not this page
 

@@ -5,10 +5,10 @@ layout: default
 {%- assign makers = site.data.operators -%}
 {%- assign maker = makers | where: "id", rec.maker | first -%}
 <article class="prose">
-  <p class="eyebrow"><a href="/packs/">Packs</a> / <a href="/makers/#{{ rec.maker }}">{{ maker.name | default: rec.maker }}</a>{% if rec.line %} / {{ rec.line }}{% endif %}</p>
+  <p class="eyebrow"><a href="/packs/">Packs</a> / <a href="/makers/{{ rec.maker }}/">{{ maker.name | default: rec.maker }}</a>{% if rec.line %} / {{ rec.line }}{% endif %}</p>
   <h1>{{ rec.name }}</h1>
   <p>
-    <strong>Maker:</strong> <a href="/makers/#{{ rec.maker }}">{{ maker.name | default: rec.maker }}</a> ·
+    <strong>Maker:</strong> <a href="/makers/{{ rec.maker }}/">{{ maker.name | default: rec.maker }}</a> ·
     <strong>Status:</strong> {{ rec.status }} ·
     <strong>Confidence:</strong> {{ rec.confidence }}
   </p>
