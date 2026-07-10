@@ -41,6 +41,7 @@ have left the corrections visible rather than quietly fixing them:
   is the brand; Article is how Sample numbers its models. Encoding them as
   siblings would have misrepresented a maker to readers who know better.
 
-Both corrections are on the record in the studio's founding brief for this
-project (`platform#223`). A dataset that hides its own errors is not a
-source; it is a claim.
+Neither correction is hidden. Each maker's entry states what the error was and
+links the sources that settle it — Raboch's own store for his name, and
+Carryology's interview with Dan Matsuda for the Article numbering. A dataset
+that quietly fixes its own errors is not a source; it is a claim.
