@@ -1,0 +1,12 @@
+id: sig-20260709-mystery-ranch-acquired-date
+source: yeti-investors
+url: https://investors.yeti.com/news/news-details/2024/YETI-Acquires-MYSTERY-RANCH/default.aspx
+subject_type: maker
+subject_id: mystery-ranch
+field: acquired_date
+value: '2024-02-02'
+observed_date: '2026-07-09'
+collected_by: console:EPIC4-05
+confidence: high
+notes: Definitive agreement announced 2024-01-31. The close date of 2024-02-02 is reported by business
+  press citing YETI's Q1 call.

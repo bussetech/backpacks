@@ -1,0 +1,40 @@
+id: sample-by-matsuda-article-404c-18l
+name: Article 404C
+maker: sample-by-matsuda
+status: made-to-order
+specs:
+  capacity_l: 18
+  capacity_note: 'The maker''s own page disagrees with itself: the page TITLE reads ''20L'' while the
+    SPEC BLOCK on the same page reads ''18 L''. Both readings are recorded as signals; neither is preferred.
+    The id takes the spec-block figure because an id must be stable, not because 18 L is the truer number.'
+  dimensions: 11"W x 19"H x 6"D
+  materials: VX21 (Dimension Polyant); 1000D Cordura; High Cycle Loop; EVA foam; Tegris frame sheet
+  made_in: Beaverton, Oregon, USA
+  lead_time: about 8 weeks, made to order
+price:
+  amount: 430.0
+  currency: USD
+  observed: '2026-07-09'
+carry_style:
+- panel-loader
+use_case:
+- edc
+first_seen: '2026-07-09'
+last_updated: '2026-07-09'
+confidence: medium
+sources:
+- url: https://samplebymatsuda.com/products/article-404-18l-vx21-black-1
+  title: Article 404C - 20L - VX21 Black
+  publisher: Sample
+  date: '2026-07-09'
+  note: Maker product page, read 2026-07-09.
+signals:
+- sig-20260709-sample-by-matsuda-article-404c-18l-capacity-l
+- sig-20260709-sample-by-matsuda-article-404c-18l-dimensions
+- sig-20260709-sample-by-matsuda-article-404c-18l-materials
+- sig-20260709-sample-by-matsuda-article-404c-18l-made-in
+- sig-20260709-sample-by-matsuda-article-404c-18l-lead-time
+- sig-20260709-sample-by-matsuda-article-404c-18l-capacity-l-title
+- sig-20260709-sample-by-matsuda-article-404c-18l-price
+gaps:
+- Weight is not published on the product page.

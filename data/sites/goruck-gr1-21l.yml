@@ -1,0 +1,38 @@
+id: goruck-gr1-21l
+name: GR1 21L
+maker: goruck
+line: GR
+status: current
+specs:
+  capacity_l: 21
+  weight_g: 1270
+  weight_note: Maker publishes 2.8 lb; converted.
+  dimensions: 11.5"W x 18"H x 5.5"D
+  materials: 1000D CORDURA; 210D CORDURA back panel and shoulder straps; YKK zippers
+  made_in: USA
+price:
+  amount: 395.0
+  currency: USD
+  observed: '2026-07-09'
+carry_style:
+- clamshell
+use_case:
+- edc
+- training
+- travel
+first_seen: '2026-07-09'
+last_updated: '2026-07-09'
+confidence: high
+sources:
+- url: https://www.goruck.com/products/gr1
+  title: GR1
+  publisher: GORUCK
+  date: '2026-07-09'
+  note: Maker product page, read 2026-07-09.
+signals:
+- sig-20260709-goruck-gr1-21l-capacity-l
+- sig-20260709-goruck-gr1-21l-weight-g
+- sig-20260709-goruck-gr1-21l-dimensions
+- sig-20260709-goruck-gr1-21l-materials
+- sig-20260709-goruck-gr1-21l-made-in
+- sig-20260709-goruck-gr1-21l-price

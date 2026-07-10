@@ -1,0 +1,34 @@
+id: evergoods-civic-half-zip-26l
+name: CIVIC Half Zip 26L
+maker: evergoods
+line: CIVIC
+status: current
+specs:
+  capacity_l: 26
+  weight_g: 1219
+  weight_note: Maker publishes 2 lb 11 oz (1,219 g).
+  dimensions: 9.5"W x 6.5"D x 20"H (24 x 15.2 x 51 cm)
+  materials: 840d ballistic nylon 6, C0 DWR
+price:
+  amount: 235.0
+  currency: USD
+  observed: '2026-07-09'
+carry_style:
+- half-zip
+use_case:
+- edc
+first_seen: '2026-07-09'
+last_updated: '2026-07-09'
+confidence: high
+sources:
+- url: https://evergoods.us/products/civic-half-zip-22l
+  title: CIVIC Half Zip 22L
+  publisher: EVERGOODS
+  date: '2026-07-09'
+  note: Maker product page, read 2026-07-09.
+signals:
+- sig-20260709-evergoods-civic-half-zip-26l-capacity-l
+- sig-20260709-evergoods-civic-half-zip-26l-weight-g
+- sig-20260709-evergoods-civic-half-zip-26l-dimensions
+- sig-20260709-evergoods-civic-half-zip-26l-materials
+- sig-20260709-evergoods-civic-half-zip-26l-price

@@ -1,0 +1,34 @@
+id: evergoods-civic-panel-loader-16l
+name: CIVIC Panel Loader 16L
+maker: evergoods
+line: CIVIC
+status: current
+specs:
+  capacity_l: 16
+  weight_g: 1332
+  weight_note: Maker publishes 2 lb 15 oz (1,332 g).
+  dimensions: 11"W x 6"D x 16.75"H (28 x 15 x 42 cm)
+  materials: 840d ballistic nylon 6, C0 DWR
+price:
+  amount: 250.0
+  currency: USD
+  observed: '2026-07-09'
+carry_style:
+- panel-loader
+use_case:
+- edc
+first_seen: '2026-07-09'
+last_updated: '2026-07-09'
+confidence: high
+sources:
+- url: https://evergoods.us/products/civic-panel-loader
+  title: CIVIC Panel Loader
+  publisher: EVERGOODS
+  date: '2026-07-09'
+  note: Maker product page, read 2026-07-09.
+signals:
+- sig-20260709-evergoods-civic-panel-loader-16l-capacity-l
+- sig-20260709-evergoods-civic-panel-loader-16l-weight-g
+- sig-20260709-evergoods-civic-panel-loader-16l-dimensions
+- sig-20260709-evergoods-civic-panel-loader-16l-materials
+- sig-20260709-evergoods-civic-panel-loader-16l-price

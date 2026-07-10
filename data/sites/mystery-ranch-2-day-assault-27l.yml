@@ -1,0 +1,40 @@
+id: mystery-ranch-2-day-assault-27l
+name: 2 Day Assault Pack
+maker: mystery-ranch
+line: Assault
+status: current
+specs:
+  capacity_l: 27
+  capacity_note: Maker page states 27 L (1650 cu in).
+  weight_g: 1361
+  weight_note: Maker publishes 3.0 lb (1.4 kg); converted.
+  dimensions: 21" x 12" x 11.25" (53 x 30 x 29 cm)
+  materials: 500D CORDURA; YKK AquaGuard zippers
+price:
+  amount: 249.0
+  currency: USD
+  observed: '2026-07-09'
+carry_style:
+- three-zip
+use_case:
+- edc
+- military
+first_seen: '2026-07-09'
+last_updated: '2026-07-09'
+confidence: medium
+sources:
+- url: https://www.mysteryranch.com/2-day-assault-pack
+  title: 2 Day Assault | MYSTERY RANCH Backpacks
+  publisher: Mystery Ranch
+  date: '2026-07-09'
+  note: Maker product page, read 2026-07-09.
+signals:
+- sig-20260709-mystery-ranch-2-day-assault-27l-capacity-l
+- sig-20260709-mystery-ranch-2-day-assault-27l-weight-g
+- sig-20260709-mystery-ranch-2-day-assault-27l-dimensions
+- sig-20260709-mystery-ranch-2-day-assault-27l-materials
+- sig-20260709-mystery-ranch-2-day-assault-27l-price
+gaps:
+- Some retailers and reviews cite a revised 29.7 L capacity; only the 27 L on the maker's page is recorded
+  here.
+- Country of manufacture not stated on the product page.

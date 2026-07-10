@@ -42,6 +42,12 @@ sass:
   # it is dead weight. First proven live by test-factory's CI (EPIC1-08).
   sourcemap: never
 
+# Jekyll reads data/ directly (rather than the default _data/) so the same
+# files that data CI validates are the render source — no copy, no drift.
+# kdc does the same; the template ships without it because a starter project
+# has no dataset yet.
+data_dir: data
+
 # data/ and schema/ are deliberately NOT excluded: the published site serves
 # the datasets and their schemas verbatim (research outputs are the point —
 # and for private-published repos they are the shareable part).
@@ -53,3 +59,6 @@ exclude:
   - README.md
   - LICENSE
   - gnomes/
+  - data-ci.yml
+  - docs/
+  - scripts/

@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://backpacks.bussetech.com/schema/sources.schema.json",
+  "title": "Source registry",
+  "description": "The source registry and fetch allowlist for this project's research gnome (platform ADR-0025, docs/source-registry.md). Nothing off this registry is ever fetched. Adapted from kdc's reference schema with one change: cadence and parser are required only for status:active sources, because this project's registry is entirely manual (see ADR-0046) and a fetch cadence for a source that is never fetched is a fiction.",
+  "type": "object",
+  "required": ["version", "sources"],
+  "additionalProperties": false,
+  "properties": {
+    "version": { "const": 1 },
+    "defaults": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "cadence": { "$ref": "#/$defs/cadence" },
+        "rate_limit_s": { "type": "integer", "minimum": 0 },
+        "max_items_per_fetch": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/source" }
+    }
+  },
+  "$defs": {
+    "cadence": { "enum": ["daily", "weekly", "monthly"] },
+    "source": {
+      "type": "object",
+      "required": ["id", "type", "url", "publisher", "status", "robots", "added"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]{1,62}[a-z0-9]$",
+          "description": "Stable slug; signals reference it."
+        },
+        "type": {
+          "enum": ["maker", "review", "community", "retailer", "press", "investor-relations"],
+          "description": "What the source is, in this domain's terms. maker = the company that builds the thing; review/community = the publications and the people who know it best; retailer = a shop; press = general or trade press cited for corporate and historical facts; investor-relations = corporate primary source for acquisitions."
+        },
+        "url": {
+          "type": "string",
+          "pattern": "^https://",
+          "description": "The source's root. For status:active this is the exact URL the fetch layer requests; for status:manual it is where a human goes."
+        },
+        "cadence": { "$ref": "#/$defs/cadence" },
+        "parser": {
+          "enum": ["rss", "news-sitemap", "link-list"],
+          "description": "How the fetch layer itemizes the response. Meaningless for manual sources."
+        },
+        "publisher": {
+          "type": "string",
+          "description": "Publisher name as it should appear on signals extracted from this source."
+        },
+        "scope": {
+          "type": "string",
+          "description": "What this source covers — for humans reviewing the registry."
+        },
+        "status": {
+          "enum": ["active", "manual", "retired"],
+          "description": "active = fetched on schedule; manual = NEVER fetched (robots/ToS, or no machine-readable surface) — material arrives by hand through research issues; retired = kept for provenance, never fetched."
+        },
+        "robots": {
+          "type": "object",
+          "required": ["checked", "notes"],
+          "additionalProperties": false,
+          "properties": {
+            "checked": { "type": "string", "format": "date", "description": "When robots.txt and ToS were last reviewed, by reading them." },
+            "notes": { "type": "string", "description": "What robots.txt and the ToS actually say, and the resulting judgment. For manual sources this field must state WHY the source stays manual." },
+            "ai_crawler_directives": { "type": "string", "description": "Whether robots.txt names AI/LLM crawlers (GPTBot, CCBot, ClaudeBot, anthropic-ai, Google-Extended) and what it says about them. 'none' is a finding worth recording, not an absence worth omitting." }
+          }
+        },
+        "rate_limit_s": { "type": "integer", "minimum": 0, "description": "Per-host politeness delay; honor any published Crawl-delay." },
+        "max_items": { "type": "integer", "minimum": 1 },
+        "added": { "type": "string", "format": "date" },
+        "notes": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "status": { "const": "active" } }, "required": ["status"] },
+          "then": {
+            "required": ["cadence", "parser"],
+            "description": "A source that is actually fetched must declare how often and how it is parsed."
+          }
+        }
+      ]
+    }
+  }
+}

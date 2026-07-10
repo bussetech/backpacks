@@ -30,10 +30,19 @@ Suburban in Hong Kong) is context and source material, engaged respectfully.
 ## Data model (the kdc mold, configured)
 
 - `data/signals/` — one claim, one source, append-only. Written by the scout.
-- `data/entries/` — resolved canonical records, three subject types:
-  **makers**, **packs**, **lines**. Written by records.
+- `data/sites/` — resolved canonical records, written by records. **The
+  subject-of-record is one pack model at one capacity.** "sites" is the info
+  archetype's frozen vocabulary for the subject-of-record, whatever the
+  dataset catalogs; the gnome writes `data/sites/<id>.yml` and the directory
+  name is part of the contract, not a description of a data center.
 - `data/operators.yml` — the makers entity registry (archetype `operators`
-  slot): stable canonical keys.
+  slot): stable canonical keys. **Makers are entities, not records.**
+- **Lines are an attribute, not a subject.** `line:` on a pack record carries
+  the maker's own product-family name, and only where a maker genuinely
+  operates named lines (Evergoods CIVIC, Mystery Ranch Hunting). A
+  model-numbering convention is not a line: Sample's "Article 404C" is a
+  model under the brand Sample, not a line called ARTICLE. The founding
+  brief got this wrong; see platform#223.
 - `data/sources.yml` — source registry and fetch allowlist; per-source
   robots.txt/ToS review (ADR-0025).
 - `data/profiles/scout.md`, `data/profiles/records.md` — the two files that
@@ -51,10 +60,14 @@ do. **Accuracy and attribution are the respect currency.**
 
 - Every published spec cites a maker page or reputable review. A spec with no
   source is **marked as a gap, never omitted** (GD-0004), never invented.
-- Community sources are credited, never scraped wholesale. A source whose
-  robots.txt/ToS does not welcome automated fetching is registered
-  `status: manual` and hand-carried; `sources.yml` records this honestly
-  rather than quietly dropping the source.
+- Community sources are credited, never scraped wholesale. **Every source in
+  `data/sources.yml` is `status: manual` and the whole corpus is hand-carried**
+  (platform ADR-0046). Two makers' terms of service prohibit crawling
+  outright; one prohibits copying its materials; one publishes no feed; the
+  community publications are not ours to harvest whatever their robots.txt
+  allows. `sources.yml` records each reason honestly rather than quietly
+  dropping the source. Flipping any source to `active` is a decision that
+  amends the ADR — CI fails if one appears without that.
 - Discontinued products and acquired-era distinctions are **history, not
   embarrassment** — handled the way kdc handles `cancelled`. Mystery Ranch's
   pre/post-acquisition nuance is the worked example: report what sources say
@@ -73,7 +86,7 @@ real and is recorded as a STEERCO decision issue — left open by design.
 - **Scout** (`gn_info_scout`, reused): reads allowlisted sources, appends
   cited claims to `data/signals/`, steered by `data/profiles/scout.md`.
 - **Records** (`gn_info_records`, reused): resolves signals into canonical
-  `data/entries/`, marks gaps, handles discontinued/acquired-era history,
+  `data/sites/`, marks gaps, handles discontinued/acquired-era history,
   steered by `data/profiles/records.md`.
 - Both arrive as PRs from `gnome/<name>/*` branches; humans merge.
 

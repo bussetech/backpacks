@@ -1,0 +1,35 @@
+id: evergoods-mountain-panel-loader-22l
+name: MOUNTAIN Panel Loader 22L
+maker: evergoods
+line: MOUNTAIN
+status: current
+specs:
+  capacity_l: 22
+  weight_g: 809
+  weight_note: Maker publishes 1 lb 12.5 oz (809 g) for the body; the waist belt adds 2.6 oz (75 g).
+  dimensions: 9.5" x 7.5" x 19.5" (24.1 x 19.1 x 49.5 cm)
+  materials: 210d HT nylon 6,6; PU Knifecoat back, silicone face
+price:
+  amount: 220.0
+  currency: USD
+  observed: '2026-07-09'
+carry_style:
+- panel-loader
+use_case:
+- hiking
+- edc
+first_seen: '2026-07-09'
+last_updated: '2026-07-09'
+confidence: high
+sources:
+- url: https://evergoods.us/products/mountain-panel-loader-22l
+  title: MOUNTAIN Panel Loader 22L
+  publisher: EVERGOODS
+  date: '2026-07-09'
+  note: Maker product page, read 2026-07-09.
+signals:
+- sig-20260709-evergoods-mountain-panel-loader-22l-capacity-l
+- sig-20260709-evergoods-mountain-panel-loader-22l-weight-g
+- sig-20260709-evergoods-mountain-panel-loader-22l-dimensions
+- sig-20260709-evergoods-mountain-panel-loader-22l-materials
+- sig-20260709-evergoods-mountain-panel-loader-22l-price

@@ -1,0 +1,103 @@
+---
+layout: default
+---
+{%- assign rec = site.data.sites[page.pack_id] -%}
+{%- assign makers = site.data.operators -%}
+{%- assign maker = makers | where: "id", rec.maker | first -%}
+<article class="prose">
+  <p class="eyebrow"><a href="/packs/">Packs</a> / <a href="/makers/#{{ rec.maker }}">{{ maker.name | default: rec.maker }}</a>{% if rec.line %} / {{ rec.line }}{% endif %}</p>
+  <h1>{{ rec.name }}</h1>
+  <p>
+    <strong>Maker:</strong> <a href="/makers/#{{ rec.maker }}">{{ maker.name | default: rec.maker }}</a> ·
+    <strong>Status:</strong> {{ rec.status }} ·
+    <strong>Confidence:</strong> {{ rec.confidence }}
+  </p>
+
+  <h2>Specifications</h2>
+  <table>
+    <tbody>
+      {%- if rec.specs.capacity_l -%}
+        <tr><th>Capacity</th><td>{{ rec.specs.capacity_l }} L{% if rec.specs.capacity_note %} <em>— {{ rec.specs.capacity_note }}</em>{% endif %}</td></tr>
+      {%- endif -%}
+      {%- if rec.specs.weight_g -%}
+        <tr><th>Weight</th><td>{{ rec.specs.weight_g }} g{% if rec.specs.weight_note %} <em>— {{ rec.specs.weight_note }}</em>{% endif %}</td></tr>
+      {%- endif -%}
+      {%- if rec.specs.dimensions -%}
+        <tr><th>Dimensions</th><td>{{ rec.specs.dimensions }}</td></tr>
+      {%- endif -%}
+      {%- if rec.specs.materials -%}
+        <tr><th>Materials</th><td>{{ rec.specs.materials }}</td></tr>
+      {%- endif -%}
+      {%- if rec.specs.made_in -%}
+        <tr><th>Made in</th><td>{{ rec.specs.made_in }}</td></tr>
+      {%- endif -%}
+      {%- if rec.specs.lead_time -%}
+        <tr><th>Lead time</th><td>{{ rec.specs.lead_time }}</td></tr>
+      {%- endif -%}
+      {%- if rec.price -%}
+        <tr><th>Price</th><td>{{ rec.price.amount }} {{ rec.price.currency }}
+          <em>— observed {{ rec.price.observed }}</em>
+          {%- if rec.price.note %} <em>{{ rec.price.note }}</em>{% endif %}</td></tr>
+      {%- endif -%}
+      {%- if rec.carry_style and rec.carry_style.size > 0 -%}
+        <tr><th>Carry style</th><td>{{ rec.carry_style | join: ", " }}</td></tr>
+      {%- endif -%}
+      {%- if rec.use_case and rec.use_case.size > 0 -%}
+        <tr><th>Use case</th><td>{{ rec.use_case | join: ", " }}</td></tr>
+      {%- endif -%}
+    </tbody>
+  </table>
+  <p><small>A price is a dated observation, not a property of the pack. Stock
+  status is not tracked at all — it changes weekly and says nothing about the
+  design.</small></p>
+
+  {%- if rec.gaps and rec.gaps.size > 0 -%}
+  <h2>What we don't know</h2>
+  <p>These are the things we looked for and did not find. They are listed
+  because an empty field should not read as an answer.</p>
+  <ul>
+    {%- for gap in rec.gaps %}
+    <li>{{ gap }}</li>
+    {%- endfor %}
+  </ul>
+  {%- endif -%}
+
+  <h2>Sources</h2>
+  <ul>
+    {%- for s in rec.sources %}
+    <li><a href="{{ s.url }}" rel="nofollow noopener">{{ s.title | default: s.url }}</a>
+      {%- if s.publisher %} — {{ s.publisher }}{% endif -%}
+      {%- if s.note %}. {{ s.note }}{% endif -%}
+    </li>
+    {%- endfor %}
+  </ul>
+
+  {%- assign conflict_count = 0 -%}
+  {%- for sig_id in rec.signals -%}
+    {%- assign sig = site.data.signals[sig_id] -%}
+    {%- if sig.conflicts_with -%}{%- assign conflict_count = conflict_count | plus: 1 -%}{%- endif -%}
+  {%- endfor -%}
+  {%- if conflict_count > 0 -%}
+  <h2>Sources that disagree</h2>
+  <p>These claims contradict each other and are recorded unresolved. We do not
+  average them, pick between them, or quietly prefer the newer one.</p>
+  <ul>
+    {%- for sig_id in rec.signals -%}
+      {%- assign sig = site.data.signals[sig_id] -%}
+      {%- if sig.conflicts_with %}
+    <li><code>{{ sig.field }}</code> = <strong>{{ sig.value }}</strong> —
+      <a href="{{ sig.url }}" rel="nofollow noopener">source</a>. {{ sig.notes }}</li>
+      {%- endif -%}
+    {%- endfor %}
+  </ul>
+  {%- endif -%}
+
+  <h2>Provenance</h2>
+  <p>This record resolves <strong>{{ rec.signals.size }}</strong> signals, each a
+  single claim read on a single page. First seen {{ rec.first_seen }}; last
+  updated {{ rec.last_updated }}. The record id <code>{{ rec.id }}</code> is
+  stable and is the citation target — see <a href="/cite/">how to cite this</a>.</p>
+  <p><small>Every source in this dataset is hand-carried. Nothing here was
+  crawled or scraped; several of these makers ask that their sites not be, and
+  we honour that whether or not they ask.</small></p>
+</article>

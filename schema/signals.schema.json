@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://backpacks.bussetech.com/schema/signals.schema.json",
+  "title": "Signal",
+  "description": "One claim, from one source, about one subject. Append-only. Signals are never rewritten to agree with each other — conflicting signals coexist by design, and the resolved record in data/sites/ carries the conflict openly. Written by gn_info_scout; the founding corpus was hand-carried (platform ADR-0046) and says so in `collected_by`.",
+  "type": "object",
+  "required": ["id", "source", "url", "subject_type", "field", "value", "observed_date", "collected_by"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^sig-[0-9]{8}-[a-z0-9][a-z0-9-]*$",
+      "description": "sig-YYYYMMDD-<slug>. Matches the filename."
+    },
+    "source": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$",
+      "description": "id from data/sources.yml. Referential integrity is CI-enforced."
+    },
+    "url": {
+      "type": "string",
+      "pattern": "^https://",
+      "description": "The exact page the claim was read on — not the site root, not a search result."
+    },
+    "subject_type": {
+      "enum": ["pack", "maker"],
+      "description": "pack resolves into data/sites/; maker resolves into data/operators.yml."
+    },
+    "subject_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$",
+      "description": "The resolved subject's id, when known. Omit it and set site_hint when the subject is new."
+    },
+    "site_hint": {
+      "type": "string",
+      "description": "Free-text identification for a subject that has no record yet: '<maker as reported> <model> — <capacity as reported>'."
+    },
+    "field": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The attribute claimed, from the profile's attribute vocabulary (capacity_l, weight_g, price, acquired_date, ...)."
+    },
+    "value": {
+      "type": ["string", "number", "boolean"],
+      "description": "What the source says, as the source says it. Units belong in the field name, not the value."
+    },
+    "observed_date": { "type": "string", "format": "date", "description": "When the page was read." },
+    "collected_by": {
+      "type": "string",
+      "description": "Who read it: a gnome receipt stamp (gn_info_scout/1.0.1) or a console session (console:EPIC4-05). Never left blank — a claim's collector is part of its provenance."
+    },
+    "confidence": {
+      "enum": ["high", "medium", "low"],
+      "description": "high = the maker or acquirer speaking for itself. medium = reputable press or review. low = anything else. Absent means unrated, not high."
+    },
+    "conflicts_with": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Signal ids this claim contradicts. Two signals may disagree and BOTH be accurate reports of what their sources said — including two signals from the same URL."
+    },
+    "notes": { "type": "string" }
+  },
+  "anyOf": [
+    { "required": ["subject_id"] },
+    { "required": ["site_hint"] }
+  ]
+}
