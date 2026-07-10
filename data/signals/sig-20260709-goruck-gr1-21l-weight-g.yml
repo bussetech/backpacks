@@ -1,0 +1,10 @@
+id: sig-20260709-goruck-gr1-21l-weight-g
+site_id: goruck-gr1-21l
+attribute: weight_g
+value: 1270
+source_url: https://www.goruck.com/products/gr1
+source_title: GR1
+publisher: GORUCK
+observed_date: '2026-07-09'
+collected_by: console:EPIC4-05
+confidence: high

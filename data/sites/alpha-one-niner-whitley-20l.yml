@@ -1,0 +1,41 @@
+id: alpha-one-niner-whitley-20l
+name: WHITLEY Backpack
+maker: alpha-one-niner
+line: WHITLEY
+status: current
+specs:
+  capacity_l: 20
+  weight_g: 1180
+  weight_note: Maker publishes 2.6 lb (1.18 kg) in 500D; 2.66 lb in X42; 3.02 lb in 1050D. The 500D figure
+    is recorded.
+  dimensions: 18.5"H x 11"W x 6"D
+  materials: 500D nylon, X-Pac X42, or 1050D ballistic nylon; 200D ripstop lining
+  made_in: Vietnam
+price:
+  amount: 199.0
+  currency: USD
+  observed: '2026-07-09'
+  note: From-price for the 500D fabric; other fabrics list higher (about $219).
+carry_style:
+- panel-loader
+use_case:
+- edc
+first_seen: '2026-07-09'
+last_updated: '2026-07-09'
+confidence: medium
+sources:
+- url: https://www.alphaoneniner.com/products/whitley
+  title: WHITLEY
+  publisher: Alpha One Niner
+  date: '2026-07-09'
+  note: Maker product page, read 2026-07-09.
+signals:
+- sig-20260709-alpha-one-niner-whitley-20l-capacity-l
+- sig-20260709-alpha-one-niner-whitley-20l-weight-g
+- sig-20260709-alpha-one-niner-whitley-20l-dimensions
+- sig-20260709-alpha-one-niner-whitley-20l-materials
+- sig-20260709-alpha-one-niner-whitley-20l-made-in
+- sig-20260709-alpha-one-niner-whitley-20l-price
+gaps:
+- Made in Vietnam is inferred from the maker's own statement that production runs at its Saigon studio,
+  not from this product page.

@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://backpacks.bussetech.com/schema/signals.schema.json",
+  "title": "Signal",
+  "description": "One claim, from one source, about one subject. Append-only; never rewritten to agree with a later claim. Conflicting signals coexist by design and the resolved record carries the conflict openly.\n\nThis is the info archetype's frozen signal shape (platform ADR-0045), copied from kdc rather than redesigned: gn_info_scout emits exactly these fields, so a project that renames them would fail data CI on the gnome's first live run. `site_id` means the subject-of-record, which in this dataset is one pack model at one capacity.\n\nNote what is NOT here: there is no `conflicts_with` field. Two signals conflict when they share a `site_id` and an `attribute` and disagree on `value`. That is derivable, so it is derived (scripts/gen_pages.py), never hand-maintained.",
+  "type": "object",
+  "required": ["id", "attribute", "value", "source_url", "observed_date", "collected_by", "confidence"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^sig-[0-9]{8}-[a-z0-9][a-z0-9-]*$",
+      "description": "sig-YYYYMMDD-<slug>. Matches the filename stem."
+    },
+    "site_id": {
+      "type": ["string", "null"],
+      "pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$",
+      "description": "The resolved pack record this claim belongs to, or null while the pack is an unmatched candidate. NULL IS REQUIRED HERE, not omitted: the archetype's prompt instructs the scout to emit `site_id: null` with a `site_hint` for a new subject. (`site_hint` is the opposite — omitted, never null, when site_id is set.) CI enforces that a non-null site_id names a real record."
+    },
+    "site_hint": {
+      "type": "string",
+      "description": "Free-text identification when site_id is null: '<maker as reported> <model> — <capacity as reported>'. Omit this key entirely when site_id is set."
+    },
+    "attribute": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The attribute claimed, from the profile's vocabulary: capacity_l, weight_g, dimensions, materials, made_in, lead_time, price."
+    },
+    "value": {
+      "type": ["string", "number"],
+      "description": "What the source says, as the source says it."
+    },
+    "source_url": {
+      "type": "string",
+      "pattern": "^https://",
+      "description": "The exact page the claim was read on — not a site root, never a search-result snippet. CI enforces that its host belongs to a registered source."
+    },
+    "source_title": { "type": "string" },
+    "publisher": { "type": "string" },
+    "source_date": { "type": "string" },
+    "observed_date": { "type": "string", "format": "date", "description": "When the page was read." },
+    "collected_by": {
+      "type": "string",
+      "description": "Who read it: a gnome receipt stamp (gn_info_scout/1.0.1) or a console session (console:EPIC4-05). A claim's collector is part of its provenance."
+    },
+    "confidence": {
+      "enum": ["high", "medium", "low"],
+      "description": "high = the maker or acquirer speaking for itself. medium = reputable press or review. low = anything else."
+    },
+    "notes": { "type": "string" }
+  },
+  "allOf": [
+    {
+      "description": "A claim must identify its subject: either a resolved site_id, or a site_hint naming the candidate.",
+      "if": { "properties": { "site_id": { "type": "null" } } },
+      "then": { "required": ["site_hint"] }
+    },
+    {
+      "if": { "not": { "required": ["site_id"] } },
+      "then": { "required": ["site_hint"] }
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+id: alpha-one-niner-evade-1-5-25l
+name: EVADE 1.5 Backpack Gen 3
+maker: alpha-one-niner
+line: EVADE
+status: current
+specs:
+  capacity_l: 25
+  weight_g: 1620
+  weight_note: Maker publishes 3.56 lb (1.62 kg) in 500D; 3.63 lb in Ultra 400TX; 3.65 lb in X42. The
+    500D figure is recorded.
+  dimensions: 18.5"H x 12" tapering to 9"W x 7"D (47 x 30.5 x 14 cm)
+  materials: Challenge Ultra 400TX, Dimension-Polyant X42, or 500D nylon
+  made_in: Vietnam
+price:
+  amount: 229.0
+  currency: USD
+  observed: '2026-07-09'
+  note: 500D. X42 Olive listed at $249; Ultra at $279.
+carry_style:
+- panel-loader
+use_case:
+- edc
+- travel
+first_seen: '2026-07-09'
+last_updated: '2026-07-09'
+confidence: medium
+sources:
+- url: https://www.alphaoneniner.com/products/alpha-one-niner-evade-1-5-backpack-gen-3
+  title: EVADE 1.5 Backpack Gen 3
+  publisher: Alpha One Niner
+  date: '2026-07-09'
+  note: Maker product page, read 2026-07-09.
+signals:
+- sig-20260709-alpha-one-niner-evade-1-5-25l-capacity-l
+- sig-20260709-alpha-one-niner-evade-1-5-25l-weight-g
+- sig-20260709-alpha-one-niner-evade-1-5-25l-dimensions
+- sig-20260709-alpha-one-niner-evade-1-5-25l-materials
+- sig-20260709-alpha-one-niner-evade-1-5-25l-made-in
+- sig-20260709-alpha-one-niner-evade-1-5-25l-price
+gaps:
+- Made in Vietnam is inferred from the maker's Saigon studio statement, not from this product page.

@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://backpacks.bussetech.com/schema/sites.schema.json",
+  "title": "Pack record",
+  "description": "A resolved canonical record. 'sites' is the info archetype's frozen vocabulary for the subject-of-record (platform ADR-0045); in this dataset the subject-of-record is one pack model at one capacity. Every published value traces to a signal and thence to a source. Values we do not have are named in `gaps`, never guessed.",
+  "type": "object",
+  "required": ["id", "name", "maker", "status", "first_seen", "last_updated", "confidence", "sources"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$", "description": "Deterministic per data/profiles/records.md. Equals the filename stem." },
+    "name": { "type": "string", "minLength": 1, "description": "The model name as the maker writes it." },
+    "maker": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$", "description": "id from data/operators.yml. CI-enforced." },
+    "line": { "type": "string", "description": "The maker's own product-family name — ONLY where the maker actually operates named lines. A model-numbering convention is not a line." },
+    "status": {
+      "enum": ["current", "discontinued", "made-to-order", "unknown"],
+      "description": "Product lifecycle, never inventory. 'Sold out' is not a status. Discontinued packs stay in the dataset — history, not embarrassment."
+    },
+    "specs": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "capacity_l": { "type": "number", "exclusiveMinimum": 0 },
+        "capacity_note": { "type": "string", "description": "Carries a conflict the sources have not resolved. Do not resolve it here." },
+        "weight_g": { "type": "integer", "exclusiveMinimum": 0, "description": "Grams. Convert from the maker's units and say so in weight_note if the maker published pounds." },
+        "weight_note": { "type": "string" },
+        "dimensions": { "type": "string", "description": "As published, with units, e.g. '11.5\"W x 18\"H x 5.5\"D'." },
+        "materials": { "type": "string" },
+        "made_in": { "type": "string" },
+        "lead_time": { "type": "string", "description": "For made-to-order packs." }
+      }
+    },
+    "price": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["amount", "currency", "observed"],
+      "properties": {
+        "amount": { "type": "number", "minimum": 0 },
+        "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+        "observed": { "type": "string", "format": "date", "description": "Required. A price is a dated observation, not a property of the pack." },
+        "note": { "type": "string" }
+      }
+    },
+    "carry_style": {
+      "type": "array",
+      "items": { "enum": ["panel-loader", "top-loader", "rolltop", "half-zip", "three-zip", "clamshell", "sling", "pouch", "organizer"] }
+    },
+    "use_case": {
+      "type": "array",
+      "items": { "enum": ["edc", "travel", "hiking", "hunting", "military", "training", "photo"] }
+    },
+    "released": { "type": "string", "description": "Year or ISO date, as sourced." },
+    "discontinued": { "type": "string", "description": "Year or ISO date, as sourced." },
+    "first_seen": { "type": "string", "format": "date" },
+    "last_updated": { "type": "string", "format": "date" },
+    "confidence": { "enum": ["high", "medium", "low"] },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["url", "publisher"],
+        "additionalProperties": false,
+        "properties": {
+          "url": { "type": "string", "pattern": "^https://" },
+          "title": { "type": "string" },
+          "publisher": { "type": "string" },
+          "date": { "type": "string" },
+          "note": { "type": "string" }
+        }
+      }
+    },
+    "signals": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^sig-" },
+      "description": "The signal ids this record resolves. CI-enforced to exist."
+    },
+    "gaps": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Named unknowns. 'We looked and did not find' — the difference between a gap and an omission is the difference between honesty and sloppiness."
+    },
+    "notes": { "type": "string" }
+  }
+}

@@ -1,0 +1,19 @@
+# Dataset ↔ schema mapping for studio data CI (bussetech/ci reusable-data-ci).
+# Manifest mode (not convention) because this dataset needs the referential-
+# integrity hook: signals.source ↔ sources, signals.subject_id ↔ sites or
+# operators, sites.maker ↔ operators, sites.signals[] ↔ signals, and
+# record-id ↔ filename ↔ page-stub coherence.
+datasets:
+  - name: sites
+    schema: schema/sites.schema.json
+    files: "data/sites/*.yml"
+  - name: signals
+    schema: schema/signals.schema.json
+    files: "data/signals/*.yml"
+  - name: operators
+    schema: schema/operators.schema.json
+    files: "data/operators.yml"
+  - name: sources
+    schema: schema/sources.schema.json
+    files: "data/sources.yml"
+integrity: scripts/check-integrity.sh

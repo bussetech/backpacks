@@ -1,0 +1,24 @@
+id: filip-raboch-summit-seeker-plus
+name: Summit Seeker Plus
+maker: filip-raboch
+status: made-to-order
+price:
+  amount: 395.0
+  currency: EUR
+  observed: '2026-07-09'
+use_case:
+- hiking
+first_seen: '2026-07-09'
+last_updated: '2026-07-09'
+confidence: medium
+sources:
+- url: https://filipraboch.com/collections/backpacks
+  title: Backpacks
+  publisher: Filip Raboch
+  date: '2026-07-09'
+  note: Maker product page, read 2026-07-09.
+signals:
+- sig-20260709-filip-raboch-summit-seeker-plus-price
+gaps:
+- Capacity, weight, dimensions and materials are all unpublished on the collection listing; the product
+  page was not read.

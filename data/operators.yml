@@ -1,0 +1,264 @@
+# Maker registry — canonical entities for this dataset.
+#
+# Schema: schema/operators.schema.json. Resolved from signals by
+# gn_info_records; additions arrive by PR, never invented mid-run.
+#
+# Every corporate-event claim below is cited. Where sources are silent, the
+# silence is recorded in `gaps` and nothing is inferred to fill it.
+
+- id: mystery-ranch
+  name: Mystery Ranch
+  type: maker
+  status: acquired
+  country: US
+  hq: "Bozeman, Montana"
+  founded: 2000
+  homepage: https://www.mysteryranch.com/
+  founders:
+    - Dana Gleason
+    - Renee Sippel-Baker
+  parent: yeti-holdings
+  acquired_date: "2024-02-02"
+  acquisition_price:
+    amount: 36200000
+    currency: USD
+    confidence: medium
+  predecessors:
+    - Kletterwerks (founded 1975 by Dana Gleason)
+    - Dana Design (sold to K2 in 1996)
+  notes: >-
+    Load-carriage packs across military, wildland fire, hunting and
+    everyday-carry lines; known for its 3-ZIP access design. The company is
+    the continuation of Dana Gleason's pack-design lineage: Kletterwerks
+    (1975), later Dana Design, which was sold to K2 in 1996; Gleason and
+    Renee Sippel-Baker launched Mystery Ranch in 2000.
+
+    YETI Holdings announced a definitive agreement to acquire Mystery Ranch
+    on 2024-01-31; the acquisition closed on 2024-02-02. The $36.2M figure
+    is from business press reporting YETI's Q1 earnings call, not from
+    YETI's own release — hence `confidence: medium`. YETI's release stated
+    Mystery Ranch "will continue to operate out of Bozeman" and that teams
+    and functions would integrate "over the next several months".
+
+    On whether products or manufacturing changed after the acquisition,
+    the sources we read are silent. We say nothing further. The community
+    has its own views; this dataset does not launder them into fact.
+  gaps:
+    - "Dana Design's founding year (commonly cited as 1985) is not confirmed on any page we read. The maker's UK about page returned HTTP 403."
+    - "Whether product lines or manufacturing changed pre- vs post-acquisition: no sourced statement found either way."
+    - "The $36.2M price was not read at its primary source (YETI's SEC filing); it is taken from business press attributing the Q1 earnings call."
+  sources:
+    - url: https://investors.yeti.com/news/news-details/2024/YETI-Acquires-MYSTERY-RANCH/default.aspx
+      title: "YETI® Acquires MYSTERY RANCH®"
+      publisher: "YETI Holdings, Inc."
+      date: "2024-01-31"
+      kind: primary
+      note: "Announcement of the definitive agreement; states continued Bozeman operations. Does not state the price."
+    - url: https://www.outdoorsportswire.com/yeti-discloses-mystery-ranch-acquisition-price/
+      title: "Yeti Discloses Mystery Ranch Acquisition Price"
+      publisher: "Outdoor Sports Wire"
+      kind: secondary
+      note: "Reports $36.2M and a 2024-02-02 close, attributing YETI's Q1 earnings call."
+    - url: https://www.fieldmag.com/articles/dana-gleason-interview-mystery-ranch-kletterwerks
+      title: "Interview With Mystery Ranch Founder Dana Gleason"
+      publisher: "Field Mag"
+      kind: secondary
+      note: "Dana Design sold to K2 in 1996; Kletterwerks revived 2010."
+    - url: https://www.mossyoak.com/our-obsession/blogs/hunting-gear/built-the-mystery-ranch-story
+      title: "BUILT: The Mystery Ranch Story"
+      publisher: "Mossy Oak"
+      kind: secondary
+      note: "Kletterwerks founded 1975; lineage 'became Dana Designs and eventually MYSTERY RANCH in 2000'."
+
+- id: yeti-holdings
+  name: "YETI Holdings, Inc."
+  type: parent-company
+  status: active
+  country: US
+  homepage: https://www.yeti.com/
+  notes: "Owner of Mystery Ranch since 2024-02-02. Registered here so the acquisition resolves to an entity rather than a bare string."
+  sources:
+    - url: https://investors.yeti.com/news/news-details/2024/YETI-Acquires-MYSTERY-RANCH/default.aspx
+      title: "YETI® Acquires MYSTERY RANCH®"
+      publisher: "YETI Holdings, Inc."
+      date: "2024-01-31"
+      kind: primary
+
+- id: evergoods
+  name: EVERGOODS
+  type: maker
+  status: active
+  country: US
+  hq: "Bozeman, Montana"
+  founded: 2016
+  homepage: https://evergoods.us/
+  founders:
+    - Jack Barley
+    - Kevin Dee
+  notes: >-
+    Founded by Jack Barley and Kevin Dee, who came from GORUCK and
+    Patagonia. The brand's own blog says the founders' experience spans
+    "the likes of GORUCK and Patagonia" without assigning who came from
+    where; the Barley→GORUCK and Dee→Patagonia mapping is from secondary
+    press and is recorded as such. Launched via Kickstarter with two bags,
+    the CPL24 and MPL30. Its stated aim is "crossover equipment" blending
+    "the technical refinement of outdoor gear with all the ease and appeal
+    of everyday wear". The current lineup is organized under the CIVIC,
+    MOUNTAIN, ELEMENT and Transit families — these are genuine named lines.
+  gaps:
+    - "Formal incorporation date not verified; 2016 is anchored to the maker's launch blog post dated 2016-12-18 and its Kickstarter launch."
+    - "Which founder worked for which company is maker-unconfirmed; only secondary press assigns the mapping."
+    - "Specs for the original CPL24/MPL30/CTB40 (pre-rename) are not verified; the brand has re-tooled naming to CIVIC/MOUNTAIN nomenclature."
+  sources:
+    - url: https://evergoods.us/pages/origin
+      title: "Our Story / Origin"
+      publisher: EVERGOODS
+      kind: primary
+    - url: https://evergoods.us/blogs/evergoods-road-to-launch/building-evergoods
+      title: "Building EVERGOODS"
+      publisher: EVERGOODS
+      date: "2016-12-18"
+      kind: primary
+      note: "Names both founders; anchors the 2016 launch."
+    - url: https://www.gearpatrol.com/outdoors/a369800/evergoods-all-american-backpacks-goruck-patagonia/
+      title: "All-New, All-American Backpacks, from Ex-Patagonia and GORUCK Designers"
+      publisher: "Gear Patrol"
+      kind: secondary
+      note: "Source of the founder→employer mapping; not confirmed by the maker."
+
+- id: goruck
+  name: GORUCK
+  type: maker
+  status: active
+  country: US
+  founded: 2008
+  homepage: https://www.goruck.com/
+  founders:
+    - Jason McCarthy
+    - Emily McCarthy
+  notes: >-
+    Founded in 2008 by Jason McCarthy, a former US Army Special Forces
+    soldier, with co-founder Emily McCarthy. The first product, the GR1,
+    grew out of a "go bag" designed while Emily McCarthy worked in West
+    Africa, and was refined over roughly two and a half years before launch.
+    Construction is distinguished by 1000D CORDURA with softer 210D CORDURA
+    on the back panel and shoulder straps, YKK zippers, MOLLE webbing, and
+    US manufacturing — the GR1 page says "Overbuilt in the USA".
+  gaps:
+    - "HQ (Jacksonville Beach, Florida) appears only in secondary sources; not confirmed on a GORUCK-owned page."
+    - "GR2 and GR3 specs could not be read: their product pages are JS-rendered and returned no spec table."
+  sources:
+    - url: https://www.goruck.com/pages/about-goruck
+      title: "GORUCK Origins"
+      publisher: GORUCK
+      kind: primary
+      note: "Founded 2008; founders Jason and Emily McCarthy."
+    - url: https://www.goruck.com/products/gr1
+      title: "GR1"
+      publisher: GORUCK
+      kind: primary
+      note: "Construction details; 'Overbuilt in the USA'."
+    - url: https://www.forbes.com/sites/amitchowdhry/2018/02/12/goruck-jason-mccarthy/
+      title: "How A Special Forces Soldier Built A Multimillion-Dollar Backpack Brand"
+      publisher: Forbes
+      date: "2018-02-12"
+      kind: secondary
+
+- id: alpha-one-niner
+  name: Alpha One Niner
+  type: maker
+  status: active
+  aliases:
+    - AON
+  homepage: https://www.alphaoneniner.com/
+  founders:
+    - Helmie Ashiblie
+  notes: >-
+    A boutique carry brand founded by Helmie "HELM" Ashiblie, whose About
+    page describes him as "a seasoned veteran of shooting sports, military
+    life, fashion industry and product design & development". The brand name
+    comes from his military call sign, from leading a reconnaissance platoon
+    in the Singaporean Army. Production runs from the brand's own facility,
+    "the Studio", in Saigon, Vietnam. The line runs to low-profile,
+    tech-friendly carry — backpacks, pouches, dopp kits, organizers — with
+    the EVADE backpack as its flagship.
+  gaps:
+    - "Founding year: not stated on any page we read. Unknown."
+    - "Corporate HQ and country of registration: the About page names only the Saigon production studio. The `country` field is therefore omitted rather than guessed."
+    - "The About page calls EVADE 'award winning'; specific award years appeared only in search snippets and are not cited here."
+  sources:
+    - url: https://www.alphaoneniner.com/pages/about
+      title: "About Us"
+      publisher: "Alpha One Niner"
+      kind: primary
+
+- id: filip-raboch
+  name: Filip Raboch
+  type: maker
+  status: active
+  homepage: https://filipraboch.com/
+  founders:
+    - Filip Raboch
+  notes: >-
+    A solo maker who hand-builds made-to-order backpacks and accessories,
+    sold through a monthly raffle with lead times of roughly ten to twelve
+    weeks. His About page states: "I made my first backpack in 2018, but I
+    got fully into making gear in 2020." Prices are listed in euros.
+
+    Recorded here under the spelling the maker himself uses. This project's
+    founding brief said "Filip Robach"; no designer of that name exists, and
+    the misspelling is corrected with the correction itself on the record
+    (platform#223).
+  gaps:
+    - "Workshop location: search snippets say Prague, Czech Republic, but no page we read states it. Omitted rather than assumed."
+    - "`founded` is omitted: 2018 is when he made his first backpack and 2020 when he went full-time; neither is a company founding date, and the sources do not offer one."
+  sources:
+    - url: https://filipraboch.com/pages/about
+      title: "About"
+      publisher: "Filip Raboch"
+      kind: primary
+    - url: https://filipraboch.com/collections/backpacks
+      title: "Backpacks"
+      publisher: "Filip Raboch"
+      kind: primary
+
+- id: sample-by-matsuda
+  name: Sample
+  type: maker
+  status: active
+  aliases:
+    - "Sample by Matsuda"
+  country: US
+  hq: "Beaverton, Oregon"
+  homepage: https://samplebymatsuda.com/
+  founders:
+    - Dan Matsuda
+  notes: >-
+    The carry brand of designer Dan Matsuda, who was a product designer at
+    Triple Aught Design from 2006 to 2018 and now builds in small batches in
+    Beaverton, Oregon.
+
+    Its products are named by an "Article" numbering convention — Article
+    404, Article 252, Article_017. **Article is not a product line, and
+    Sample is not one either: Sample is the brand, Article is how its models
+    are numbered.** This project's founding brief described "SAMPLE and
+    ARTICLE lines" as two parallel lines; that is wrong, and encoding it
+    would have misrepresented the maker to readers who know better. The
+    correction is on the record at platform#223.
+
+    The legacy domain danmatsuda.com is now a landing page pointing at the
+    Sample store.
+  gaps:
+    - "Founding year of the brand: not stated on any page we read."
+    - "Most individual Article models (441, 498–501, and the historical 252 and 017) are unverified; only Article 404C was read in full."
+  sources:
+    - url: https://samplebymatsuda.com/
+      title: "Sample"
+      publisher: Sample
+      kind: primary
+    - url: https://www.carryology.com/interviews-regular/dan-matsuda-a-new-world-of-edc/
+      title: "Dan Matsuda: a New World of EDC"
+      publisher: Carryology
+      date: "2020-07-01"
+      kind: secondary
+      note: "Confirms the TAD tenure 2006–2018 and describes the 'Article' numbering system."

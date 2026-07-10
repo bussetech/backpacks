@@ -1,0 +1,40 @@
+id: filip-raboch-wanderer-23l
+name: Wanderer
+maker: filip-raboch
+status: made-to-order
+specs:
+  capacity_l: 23
+  capacity_note: 23 L, expandable to 30 L via the rolltop extension.
+  weight_g: 800
+  weight_note: Maker publishes 'from 800 g'; the weight varies by fabric and customization.
+  dimensions: 50 cm H (74 cm fully unrolled) x 25–27 cm W x 14 cm D
+  materials: Customizable fabrics; YKK Aquaguard zippers
+  lead_time: 10–12 weeks, made to order
+price:
+  amount: 700.0
+  currency: EUR
+  observed: '2026-07-09'
+  note: Listed as sold out; sold by monthly raffle.
+carry_style:
+- rolltop
+use_case:
+- travel
+- edc
+first_seen: '2026-07-09'
+last_updated: '2026-07-09'
+confidence: medium
+sources:
+- url: https://filipraboch.com/products/wanderer
+  title: Wanderer
+  publisher: Filip Raboch
+  date: '2026-07-09'
+  note: Maker product page, read 2026-07-09.
+signals:
+- sig-20260709-filip-raboch-wanderer-23l-capacity-l
+- sig-20260709-filip-raboch-wanderer-23l-weight-g
+- sig-20260709-filip-raboch-wanderer-23l-dimensions
+- sig-20260709-filip-raboch-wanderer-23l-materials
+- sig-20260709-filip-raboch-wanderer-23l-lead-time
+- sig-20260709-filip-raboch-wanderer-23l-price
+gaps:
+- Country of manufacture not stated on any page read.

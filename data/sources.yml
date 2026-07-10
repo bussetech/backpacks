@@ -1,0 +1,299 @@
+# Source registry — and the fetch allowlist for gn_info_scout.
+#
+# Schema: schema/sources.schema.json (validated by data CI). Convention:
+# platform docs/source-registry.md; decision: platform ADR-0025. The
+# all-manual posture recorded here is platform ADR-0046.
+#
+# THE RULES
+#   - This registry IS the allowlist. The deterministic fetch layer
+#     (platform scripts/source_fetch.py) requests exactly the URLs of
+#     status:active sources and nothing else. The gnome never fetches.
+#   - status:manual sources are NEVER fetched. They exist to document why.
+#     Their material reaches the scout as hand-assembled research issues.
+#   - Adding a source is a one-file PR here: read robots.txt yourself, read
+#     the ToS yourself, record what they say under robots:, and set status.
+#     Sysop- or gnome-proposed; humans merge.
+#
+# EVERY SOURCE IN THIS REGISTRY IS status:manual. That is not an oversight
+# and not a temporary state — it is the finding of the founding audit
+# (2026-07-09), in which all seven candidate domains were probed live:
+# robots.txt read, ToS read, feed endpoints tried.
+#
+#   - Two makers (Evergoods, GoRuck) publish Terms of Service that
+#     explicitly prohibit "spider, crawl, or scrape". A permissive
+#     robots.txt does not override a prohibition the operator wrote in
+#     prose. We do not fetch them.
+#   - One maker (Alpha One Niner) forbids copying or transmitting its
+#     materials without prior written consent, and its only feed is empty.
+#   - One maker (Mystery Ranch) publishes no feed at all. There is no
+#     polite scheduled surface to poll, and its product pages are
+#     JS-rendered.
+#   - Two makers (Filip Raboch, Sample) are one-person shops. Their
+#     robots.txt permits reading product pages, and we still do not poll
+#     them: a scheduled fetcher aimed at a solo maker's Shopify store is
+#     rude in a way robots.txt has no vocabulary for.
+#   - The community and editorial sources (Carryology, The Perfect Pack,
+#     Suburban) publish clean, permissive feeds. We do not fetch those
+#     either. These are the people who know this subject better than we
+#     do; we read them, credit them by name, and link to them. We do not
+#     aggregate them on a cron.
+#
+# The consequence is deliberate and load-bearing: this dataset is
+# hand-carried. It grows when a human reads something and files a research
+# issue. It will grow slowly. That is the correct speed for a dataset whose
+# only asset is being right.
+#
+# A note on AI crawlers: not one of the seven robots.txt files probed on
+# 2026-07-09 named an AI or LLM crawler — no GPTBot, CCBot, ClaudeBot,
+# anthropic-ai, or Google-Extended directives anywhere. We record that as a
+# finding. It is an absence of instruction, not a grant of permission, and
+# we have not treated it as one.
+
+version: 1
+
+sources:
+  # ---- makers -------------------------------------------------------------
+  - id: mysteryranch-com
+    type: maker
+    url: https://www.mysteryranch.com/
+    publisher: Mystery Ranch
+    scope: "Maker product and about pages — primary source for Mystery Ranch specs and company history."
+    status: manual
+    robots:
+      checked: "2026-07-09"
+      notes: >-
+        robots.txt (https://www.mysteryranch.com/robots.txt) applies to * and
+        disallows account/checkout/cart, services/admin, and faceted-filter
+        URL parameters (color, price, line, search, reviews). Base product
+        pages are not disallowed. Terms and Conditions
+        (https://www.mysteryranch.com/terms-and-conditions) contain no
+        clause restricting automated access. MANUAL because there is no
+        machine-readable surface to poll politely: no RSS, no Atom, no JSON
+        feed, and product pages are JS-rendered (several returned only
+        navigation when fetched). Specs are hand-carried from the maker's
+        pages, cited per claim.
+      ai_crawler_directives: "none — no GPTBot, CCBot, ClaudeBot, anthropic-ai, or Google-Extended directives present."
+    added: "2026-07-09"
+    notes: "Acquired by YETI Holdings 2024-02-02; see the yeti-investors source for the primary corporate record."
+
+  - id: evergoods-us
+    type: maker
+    url: https://evergoods.us/
+    publisher: EVERGOODS
+    scope: "Maker product and origin pages — primary source for Evergoods specs."
+    status: manual
+    robots:
+      checked: "2026-07-09"
+      notes: >-
+        robots.txt (https://evergoods.us/robots.txt) is the Shopify default
+        and permits /products, /collections, /pages, /blogs. It is
+        overridden in prose: the Terms of Service
+        (https://evergoods.us/policies/terms-of-service) section 12,
+        "Prohibited Uses", forbids use of the site "to spam, phish, pharm,
+        pretext, spider, crawl, or scrape". MANUAL, decisively — a
+        permissive robots.txt does not license conduct the operator
+        prohibits in its terms. No blog feed exists in any case
+        (/blogs/news.atom and /blogs/all.atom both 404).
+      ai_crawler_directives: "none named."
+    added: "2026-07-09"
+
+  - id: goruck-com
+    type: maker
+    url: https://www.goruck.com/
+    publisher: GORUCK
+    scope: "Maker product and about pages — primary source for GoRuck specs and founding history."
+    status: manual
+    robots:
+      checked: "2026-07-09"
+      notes: >-
+        robots.txt (https://www.goruck.com/robots.txt) explicitly allows
+        /products/ and /collections/, and a working Atom feed exists at
+        /blogs/news-stories.atom. We still do not fetch it: the Terms of
+        Service (https://www.goruck.com/policies/terms-of-service) section
+        12, "Prohibited Uses", forbids use of the site "to spam, phish,
+        pharm, pretext, spider, crawl, or scrape". MANUAL. The feed's
+        existence does not override the prohibition; where robots.txt and
+        the ToS disagree, the stricter one governs.
+      ai_crawler_directives: "none named. robots.txt carries agentic-commerce guidance (agents must not automate checkout), which concerns purchasing, not reading."
+    added: "2026-07-09"
+
+  - id: alphaoneniner-com
+    type: maker
+    url: https://www.alphaoneniner.com/
+    publisher: Alpha One Niner
+    scope: "Maker product and about pages — primary source for Alpha One Niner specs."
+    status: manual
+    robots:
+      checked: "2026-07-09"
+      notes: >-
+        robots.txt (https://www.alphaoneniner.com/robots.txt) is the Shopify
+        default and permits product and collection pages. The Terms of
+        Service (https://www.alphaoneniner.com/policies/terms-of-service)
+        contain no scraping clause but do state that materials from the site
+        "may not be copied, distributed or transmitted in any way without
+        the prior written consent of Alpha One Niner." MANUAL. We record
+        facts and cite the page; we reproduce no materials. The only feed
+        (/blogs/news.atom) is valid but empty, so there is nothing to poll.
+      ai_crawler_directives: "none named."
+    added: "2026-07-09"
+
+  - id: filipraboch-com
+    type: maker
+    url: https://filipraboch.com/
+    publisher: Filip Raboch
+    scope: "Solo maker's store and about page — primary source for Raboch specs and lead times."
+    status: manual
+    robots:
+      checked: "2026-07-09"
+      notes: >-
+        robots.txt (https://filipraboch.com/robots.txt) is the Shopify
+        default: public product, collection, page and blog content is
+        permitted; admin/cart/checkout paths are disallowed; a sitemap is
+        published. The only prohibition is on automating checkout and
+        payment. Nothing here forbids reading. MANUAL anyway, by our own
+        judgment: this is a one-person made-to-order shop selling by monthly
+        raffle. Pointing a scheduled fetcher at it would be discourteous in
+        a way robots.txt has no syntax to express. We read it by hand.
+      ai_crawler_directives: "none named."
+    added: "2026-07-09"
+
+  - id: samplebymatsuda-com
+    type: maker
+    url: https://samplebymatsuda.com/
+    publisher: Sample
+    scope: "Dan Matsuda's brand store — primary source for Sample specs. Legacy domain danmatsuda.com is a parked landing page."
+    status: manual
+    robots:
+      checked: "2026-07-09"
+      notes: >-
+        robots.txt (https://samplebymatsuda.com/robots.txt) is the Shopify
+        default: products, collections, pages and blogs permitted; a sitemap
+        is published; only checkout automation is prohibited. MANUAL by the
+        same judgment applied to filipraboch-com — a small-batch maker
+        building to order is not a feed to be polled.
+      ai_crawler_directives: "none named."
+    added: "2026-07-09"
+
+  # ---- community & editorial ----------------------------------------------
+  # These are the experts. We read them, credit them, and link to them.
+  # We do not aggregate them on a schedule, whatever their robots.txt allows.
+  - id: carryology-com
+    type: community
+    url: https://carryology.com/
+    publisher: Carryology
+    scope: "The carry community's publication of record — history, interviews, and design context. Cited for biography and context, never for specs."
+    status: manual
+    robots:
+      checked: "2026-07-09"
+      notes: >-
+        robots.txt (https://carryology.com/robots.txt) is fully permissive
+        (User-agent: * with an empty Disallow) and a clean RSS 2.0 feed is
+        published at /feed/. A terms-of-use page exists at
+        /terms-of-use/; its substantive clauses were not readable by the
+        fetcher, so no permission is inferred from it either way. MANUAL by
+        standing policy: this is an independent editorial publication whose
+        writers are the reason this subject is documented at all. Their work
+        is cited and linked, never harvested.
+      ai_crawler_directives: "none named."
+    added: "2026-07-09"
+
+  - id: theperfectpack-com
+    type: review
+    url: https://theperfectpack.com/
+    publisher: The Perfect Pack
+    scope: "Independent review site. Secondary source for measured specs and long-term use notes."
+    status: manual
+    robots:
+      checked: "2026-07-09"
+      notes: >-
+        robots.txt (https://theperfectpack.com/robots.txt) blocks only
+        WordPress admin paths; an RSS 2.0 feed is published at /feed/. No
+        terms-of-service page was found (/terms/ returns 404); the privacy
+        policy contains no clause on automated access. MANUAL by standing
+        policy for independent editorial sites. A permissive robots.txt from
+        a small reviewer is not an invitation to scrape them.
+      ai_crawler_directives: "none named."
+    added: "2026-07-09"
+
+  # ---- retail -------------------------------------------------------------
+  - id: suburban-com-hk
+    type: retailer
+    url: https://suburban.com.hk/
+    publisher: Suburban
+    scope: "Hong Kong technical-carry retailer and community hub. Context and availability, never a spec source — a retailer's spec never outranks the maker's."
+    status: manual
+    robots:
+      checked: "2026-07-09"
+      notes: >-
+        The domain suburban.hk does not resolve (DNS NXDOMAIN); the real
+        domain is suburban.com.hk, corrected here. robots.txt
+        (https://suburban.com.hk/robots.txt) is the Shopify default and an
+        Atom feed exists at /blogs/news.atom. No terms-of-service page could
+        be located (/policies/terms-of-service and /pages/terms-of-service
+        both 404). MANUAL: a shop whose terms we could not read is a shop we
+        do not fetch, and its value to us is context, not data.
+      ai_crawler_directives: "none named."
+    added: "2026-07-09"
+
+  # ---- press ---------------------------------------------------------------
+  # Cited for corporate and historical facts the makers do not publish
+  # themselves. Read once, by hand, for the founding corpus. Their robots.txt
+  # files were NOT probed — which is precisely why they are manual and why we
+  # claim no fetch posture for them. An unprobed source is never active.
+  - id: outdoorsportswire-com
+    type: press
+    url: https://www.outdoorsportswire.com/
+    publisher: "Outdoor Sports Wire"
+    scope: "Outdoor-industry trade press. Cited for the Mystery Ranch acquisition price and close date."
+    status: manual
+    robots:
+      checked: "2026-07-09"
+      notes: >-
+        Not probed. The article was read once by a human for the founding
+        corpus. MANUAL, and no fetch posture is claimed: we do not assert
+        permission we did not check.
+      ai_crawler_directives: "not probed — unknown."
+    added: "2026-07-09"
+
+  - id: mossyoak-com
+    type: press
+    url: https://www.mossyoak.com/
+    publisher: "Mossy Oak"
+    scope: "Cited for Mystery Ranch's Kletterwerks/Dana Design lineage and its 2000 founding."
+    status: manual
+    robots:
+      checked: "2026-07-09"
+      notes: "Not probed; read once by hand. MANUAL, no fetch posture claimed."
+      ai_crawler_directives: "not probed — unknown."
+    added: "2026-07-09"
+
+  - id: fieldmag-com
+    type: press
+    url: https://www.fieldmag.com/
+    publisher: "Field Mag"
+    scope: "Cited for the 1996 sale of Dana Design to K2 and the Kletterwerks revival."
+    status: manual
+    robots:
+      checked: "2026-07-09"
+      notes: "Not probed; read once by hand. MANUAL, no fetch posture claimed."
+      ai_crawler_directives: "not probed — unknown."
+    added: "2026-07-09"
+
+  # ---- corporate primary sources ------------------------------------------
+  - id: yeti-investors
+    type: investor-relations
+    url: https://investors.yeti.com/
+    publisher: YETI Holdings, Inc.
+    scope: "Primary corporate record for the Mystery Ranch acquisition. Used only for corporate-event facts."
+    status: manual
+    robots:
+      checked: "2026-07-09"
+      notes: >-
+        The acquisition press release was read directly. robots.txt for the
+        investors.yeti.com subdomain was not probed, so no fetch posture is
+        claimed for it. MANUAL: a single corporate release read once by a
+        human is not a feed, and this source is consulted when a corporate
+        event happens, not on a schedule.
+      ai_crawler_directives: "not probed for this subdomain — recorded as unknown rather than assumed."
+    added: "2026-07-09"
+    notes: "The parent company's own robots.txt at www.yeti.com does name AI crawlers (Claude-User, ClaudeBot, Anthropic-AI, GPTBot, OAI-SearchBot, PerplexityBot) with empty disallow directives. Recorded for accuracy; it grants nothing we act on, since this source is manual."

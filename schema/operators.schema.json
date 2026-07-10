@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://backpacks.bussetech.com/schema/operators.schema.json",
+  "title": "Maker registry",
+  "description": "The canonical-entities registry for this dataset (the archetype's `operators` slot). Makers and the parent companies that own them. Curated, low churn, cited. Every corporate-event claim (acquisition, closure, lineage) carries a source; anything unverified is named in `gaps` rather than left silently blank.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "name", "type", "status"],
+    "additionalProperties": false,
+    "properties": {
+      "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$" },
+      "name": { "type": "string", "minLength": 1 },
+      "type": {
+        "enum": ["maker", "parent-company"],
+        "description": "maker = builds the packs this dataset catalogs. parent-company = owns a maker; present so acquisitions resolve to a real entity rather than a string."
+      },
+      "status": {
+        "enum": ["active", "acquired", "defunct", "unknown"],
+        "description": "acquired means the maker still operates under an owner (see `parent`); it is a fact about ownership, not a verdict on the product."
+      },
+      "aliases": { "type": "array", "items": { "type": "string" } },
+      "country": { "type": "string", "description": "ISO 3166-1 alpha-2." },
+      "hq": { "type": "string", "description": "City, region as reported." },
+      "founded": { "type": "integer", "minimum": 1800, "maximum": 2100 },
+      "homepage": { "type": "string", "pattern": "^https://" },
+      "founders": { "type": "array", "items": { "type": "string" } },
+      "parent": { "type": "string", "description": "id of a parent-company entry." },
+      "acquired_date": { "type": "string", "format": "date", "description": "The date the acquisition CLOSED, not the date it was announced. Record the announcement separately in notes if the two differ." },
+      "acquisition_price": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["amount", "currency", "confidence"],
+        "properties": {
+          "amount": { "type": "number" },
+          "currency": { "type": "string" },
+          "confidence": { "enum": ["high", "medium", "low"], "description": "medium or low when the figure comes from business press rather than the filing itself." }
+        }
+      },
+      "predecessors": {
+        "type": "array",
+        "items": { "type": "string" },
+        "description": "Prior brands in this maker's lineage, as history. Not ids unless those brands are themselves registered."
+      },
+      "notes": { "type": "string" },
+      "gaps": {
+        "type": "array",
+        "items": { "type": "string" },
+        "description": "Named unknowns. A gap is a statement that we looked and did not find; an omission is a statement of nothing."
+      },
+      "sources": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["url", "publisher"],
+          "additionalProperties": false,
+          "properties": {
+            "url": { "type": "string", "pattern": "^https://" },
+            "title": { "type": "string" },
+            "publisher": { "type": "string" },
+            "date": { "type": "string" },
+            "kind": { "enum": ["primary", "secondary"], "description": "primary = the maker or the acquirer speaking for itself. secondary = press, review, encyclopedia." },
+            "note": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}

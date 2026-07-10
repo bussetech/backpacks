@@ -1,0 +1,35 @@
+id: goruck-rucker-25l
+name: Rucker (5.0) 25L
+maker: goruck
+line: Rucker
+status: current
+specs:
+  capacity_l: 25
+  dimensions: 12"W x 20"H x 6.75"D
+  materials: 1000D CORDURA
+price:
+  amount: 265.0
+  currency: USD
+  observed: '2026-07-09'
+  note: Regular price. A $185.00 sale price was showing when the page was read on 2026-07-09.
+carry_style:
+- clamshell
+use_case:
+- training
+first_seen: '2026-07-09'
+last_updated: '2026-07-09'
+confidence: medium
+sources:
+- url: https://www.goruck.com/products/rucker
+  title: Rucker
+  publisher: GORUCK
+  date: '2026-07-09'
+  note: Maker product page, read 2026-07-09.
+signals:
+- sig-20260709-goruck-rucker-25l-capacity-l
+- sig-20260709-goruck-rucker-25l-dimensions
+- sig-20260709-goruck-rucker-25l-materials
+- sig-20260709-goruck-rucker-25l-price
+gaps:
+- Weight is not published on the maker's product page.
+- Country of manufacture is not stated on the Rucker page.

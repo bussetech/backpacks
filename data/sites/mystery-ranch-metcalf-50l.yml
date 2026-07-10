@@ -1,0 +1,38 @@
+id: mystery-ranch-metcalf-50l
+name: Metcalf 50 Pack
+maker: mystery-ranch
+line: Hunting
+status: current
+specs:
+  capacity_l: 50
+  capacity_note: Maker page states 50 L (3050 cu in).
+  weight_g: 2268
+  weight_note: Maker publishes 5.0 lb (2.3 kg); converted.
+  dimensions: 27" x 11.75" x 11" (69 x 30 x 28 cm)
+  materials: 330D LP CORDURA
+price:
+  amount: 550.0
+  currency: USD
+  observed: '2026-07-09'
+carry_style:
+- top-loader
+use_case:
+- hunting
+- hiking
+first_seen: '2026-07-09'
+last_updated: '2026-07-09'
+confidence: medium
+sources:
+- url: https://www.mysteryranch.com/metcalf-50-pack
+  title: Metcalf 50 Pack | MYSTERY RANCH Backpacks
+  publisher: Mystery Ranch
+  date: '2026-07-09'
+  note: Maker product page, read 2026-07-09.
+signals:
+- sig-20260709-mystery-ranch-metcalf-50l-capacity-l
+- sig-20260709-mystery-ranch-metcalf-50l-weight-g
+- sig-20260709-mystery-ranch-metcalf-50l-dimensions
+- sig-20260709-mystery-ranch-metcalf-50l-materials
+- sig-20260709-mystery-ranch-metcalf-50l-price
+gaps:
+- Country of manufacture not stated on the product page.
