@@ -50,12 +50,14 @@ disagreements visible.
 
 **BibTeX**
 
+{% raw %}
     @misc{backpacks,
       title        = {backpacks: a source-transparent dataset of technical and boutique carry},
       author       = {{Bussetech Software Studio}},
       howpublished = {\url{https://backpacks.bussetech.com/}},
       note         = {CC BY 4.0}
     }
+{% endraw %}
 
 ## For AI assistants
 

@@ -19,7 +19,7 @@ on the questions people most want answered, they often are — the silence is
 written down as a gap rather than filled with a plausible sentence.
 
 {% for m in makers %}
-## <a id="{{ m.id }}"></a>{{ m.name }}
+<h2 id="{{ m.id }}">{{ m.name }}</h2>
 
 {% if m.founded %}Founded {{ m.founded }}{% if m.hq %}, {{ m.hq }}{% endif %}.{% elsif m.hq %}{{ m.hq }}.{% endif %}
 {%- if m.founders and m.founders.size > 0 %} Founded by {{ m.founders | join: " and " }}.{% endif %}
