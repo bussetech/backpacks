@@ -13,13 +13,13 @@
       "description": "sig-YYYYMMDD-<slug>. Matches the filename stem."
     },
     "site_id": {
-      "type": "string",
+      "type": ["string", "null"],
       "pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$",
-      "description": "The resolved pack record this claim belongs to. CI-enforced to exist."
+      "description": "The resolved pack record this claim belongs to, or null while the pack is an unmatched candidate. NULL IS REQUIRED HERE, not omitted: the archetype's prompt instructs the scout to emit `site_id: null` with a `site_hint` for a new subject. (`site_hint` is the opposite — omitted, never null, when site_id is set.) CI enforces that a non-null site_id names a real record."
     },
     "site_hint": {
       "type": "string",
-      "description": "Free-text identification when the subject has no record yet: '<maker as reported> <model> — <capacity as reported>'."
+      "description": "Free-text identification when site_id is null: '<maker as reported> <model> — <capacity as reported>'. Omit this key entirely when site_id is set."
     },
     "attribute": {
       "type": "string",
@@ -49,8 +49,15 @@
     },
     "notes": { "type": "string" }
   },
-  "anyOf": [
-    { "required": ["site_id"] },
-    { "required": ["site_hint"] }
+  "allOf": [
+    {
+      "description": "A claim must identify its subject: either a resolved site_id, or a site_hint naming the candidate.",
+      "if": { "properties": { "site_id": { "type": "null" } } },
+      "then": { "required": ["site_hint"] }
+    },
+    {
+      "if": { "not": { "required": ["site_id"] } },
+      "then": { "required": ["site_hint"] }
+    }
   ]
 }
