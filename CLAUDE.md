@@ -61,13 +61,19 @@ do. **Accuracy and attribution are the respect currency.**
 - Every published spec cites a maker page or reputable review. A spec with no
   source is **marked as a gap, never omitted** (GD-0004), never invented.
 - Community sources are credited, never scraped wholesale. **Every source in
-  `data/sources.yml` is `status: manual` and the whole corpus is hand-carried**
-  (platform ADR-0046). Two makers' terms of service prohibit crawling
+  `data/sources.yml` is `status: manual`, so the scheduled fetch layer touches
+  nothing** (platform ADR-0046). Two makers' terms of service prohibit crawling
   outright; one prohibits copying its materials; one publishes no feed; the
   community publications are not ours to harvest whatever their robots.txt
   allows. `sources.yml` records each reason honestly rather than quietly
   dropping the source. Flipping any source to `active` is a decision that
   amends the ADR — CI fails if one appears without that.
+- **Do not describe the founding corpus as "hand-carried" or "read by hand".**
+  It was collected on 2026-07-09 by an AI agent session that fetched each cited
+  page once, on request. No human read those pages. Earlier copy said
+  otherwise and was corrected; `data/index.md` § *How the data was collected*
+  is the accurate account, and it names the open question about Evergoods' and
+  GoRuck's anti-scraping terms rather than resolving it in our favour.
 - Discontinued products and acquired-era distinctions are **history, not
   embarrassment** — handled the way kdc handles `cancelled`. Mystery Ranch's
   pre/post-acquisition nuance is the worked example: report what sources say
